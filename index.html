@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title>Carousel</title>
-	<link rel="stylesheet" type="text/css" href="lib/app.css">
+	<link rel="stylesheet" type="text/css" href="lib/css/app.css">
 </head>
 <body>
 	<div class="container">
@@ -29,11 +29,17 @@
 			</div>
 		</div>
 	</div>
-	<script type="text/javascript" src="lib/app.js"></script>
+	<script type="text/javascript" src="lib/js/app.js"></script>
 	<script type="text/javascript">
 		
-			var myCarouselEl = document.getElementById('my-carousel');
-			console.log(myCarouselEl);
+			let myCarouselEl = document.getElementById('my-carousel');
+
+			let myCarousel = new NAMESPACE.Carousel({
+				el: myCarouselEl,
+				bossRoss: 'nuelsson'
+			});
+
+			myCarousel.init();
 
 	</script>
 </body>
