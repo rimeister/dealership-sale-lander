@@ -11,22 +11,26 @@
 				
 			</div>
 			<div class="sidebar">
+
+				<div class="carousel loading" id="my-carousel">
+					<div class="carousel-inner">
+						<div class="slide">
+							<span class="slide-caption">Image 1</span>
+							<img src="lib/images/1.jpg">
+						</div>
+						<div class="slide">
+							<span class="slide-caption">Image 2</span>
+							<img src="lib/images/2.jpg">
+						</div>
+						<div class="slide">
+							<span class="slide-caption">Image 3</span>
+							<img src="lib/images/3.jpg">
+						</div>						
+					</div>
+				</div>
 				
 			</div>
-			<div class="carousel" id="my-carousel">
-				<div class="slide">
-					<span class="slide-caption">Image 1</span>
-					<img src="lib/images/1.jpg">
-				</div>
-				<div class="slide">
-					<span class="slide-caption">Image 2</span>
-					<img src="lib/images/2.jpg">
-				</div>
-				<div class="slide">
-					<span class="slide-caption">Image 3</span>
-					<img src="lib/images/3.jpg">
-				</div>
-			</div>
+
 		</div>
 	</div>
 	<script type="text/javascript" src="lib/js/app.js"></script>
@@ -39,6 +43,10 @@
 			});
 
 			myCarousel.init();
+
+			myCarousel.startAutoSlide(2000,function(){
+				console.log('my callback is true');
+			});
 
 	</script>
 </body>

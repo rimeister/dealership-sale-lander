@@ -65,12 +65,28 @@ Carousel
 *******************************/
 
 .carousel {
+	width: 100%;
 	margin: auto;
 	position: relative;
 }
 
-.carousel .slide {
+.carousel .carousel-inner {
+
+}
+
+.carousel.loading .slide {
 	display: none;
+}
+
+.carousel .slide {
+    float: left;
+	position: relative;
+}
+
+.carousel .slide img {
+    width: 100%;
+    height: auto;
+	display: block;	
 }
 
 .carousel .slide-caption {
