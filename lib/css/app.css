@@ -51,8 +51,13 @@ table {
 Layout
 *******************************/
 
+.content {
+	float: left;
+}
+
 .sidebar {
-	
+	width: 200px;
+	float: right;
 }
 
 /*******************************
@@ -60,5 +65,18 @@ Carousel
 *******************************/
 
 .carousel {
+	margin: auto;
+	position: relative;
+}
 
+.carousel .slide {
+	display: none;
+}
+
+.carousel .slide-caption {
+	color: #fff;
+	font-size: 12px;
+	padding: 8px 12px;
+	position: absolute;
+	top: 0;
 }
