@@ -71,7 +71,7 @@ Carousel
 	position: relative;
 }
 
-.carousel .carousel-inner {
+.carousel.transition .carousel-inner {
 	transition: margin-left 0.5s ease; 
 }
 

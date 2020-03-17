@@ -12,7 +12,7 @@
 			</div>
 			<div class="sidebar">
 
-				<div class="carousel loading" id="my-carousel">
+				<div class="carousel loading transition" id="my-carousel">
 					<div class="carousel-inner">
 						<div class="slide">
 							<span class="slide-caption">Image 1</span>
@@ -39,7 +39,8 @@
 			let myCarouselEl = document.getElementById('my-carousel');
 
 			let myCarousel = new NAMESPACE.Carousel({
-				el: myCarouselEl
+				el: myCarouselEl,
+				loop: true
 			});
 
 			myCarousel.init();
