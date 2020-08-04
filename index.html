@@ -8,11 +8,8 @@
 	<div class="container">
 		<div class="row">
 			<div class="content">
-				
-			</div>
-			<div class="sidebar">
 
-				<div class="carousel loading transition" id="my-carousel">
+				<div class="carousel loading" id="my-carousel">
 					<div class="carousel-inner">
 						<div class="slide">
 							<span class="slide-caption">Image 1</span>
@@ -27,7 +24,19 @@
 							<img src="lib/images/3.jpg">
 						</div>						
 					</div>
+
+				    <a class="carousel-nav-btn-left carousel-nav-btn">
+				        <img src="lib/images/nav/arrow-left.svg" alt="Left Navigation Arrow for Carousel">
+				    </a>
+				    <a class="carousel-nav-btn-right carousel-nav-btn">
+				        <img src="lib/images/nav/arrow-right.svg" alt="Right Navigation Arrow for Carousel">
+				    </a>
+
 				</div>
+
+			</div>
+			<div class="sidebar">
+
 				
 			</div>
 
@@ -36,18 +45,27 @@
 	<script type="text/javascript" src="lib/js/app.js"></script>
 	<script type="text/javascript">
 		
-			let myCarouselEl = document.getElementById('my-carousel');
+		let myCarouselEl = document.getElementById('my-carousel');
 
-			let myCarousel = new NAMESPACE.Carousel({
-				el: myCarouselEl,
-				loop: true
-			});
+        var myCarousel = new NAMESPACE.Carousel({
+            el: myCarouselEl,
+            loop: true,
+            transitionTime: 150,
+            nav: true,
+            callbackOnslideShown: function(slideIndex) {
 
-			myCarousel.init();
+            	// Could fire an analytics event here to track which slide has been shown
 
-			myCarousel.startAutoSlide(2000,function(){
-				console.log('my callback is true');
-			});
+            },
+            callbackOnNavBtnClick: function(btnDirection) {
+
+            	// Could fire an analytics event here to track the button clicks
+
+            }
+        });
+        myCarousel.init();
+        myCarousel.autoSlide(5000);
+
 
 	</script>
 </body>
