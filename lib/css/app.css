@@ -76,6 +76,34 @@ body {
   background-color: #000;
 }
 
+.container {
+  position: relative;
+}
+
+.backgrounds { 
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.backgrounds > div {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+.heading {
+  padding: 1px 0 0 0;
+}
+
 .heading h1 {
   text-align: center;
   text-transform: uppercase;
@@ -91,4 +119,13 @@ body {
 Carousel Instance
 *******************************/
 
+#cars-carousel {
+  margin-top: 20%;
+}
+
+#cars-carousel img {
+  max-width: 800px;
+  margin: auto;
+  display: block;
+}
 
