@@ -16,6 +16,7 @@ Carousel
 
 .rb-carousel.loading .slide {
     display: none;
+    width: 100%;
 }
 
 .rb-carousel .slide {
@@ -71,7 +72,6 @@ Carousel
 }
 
 /* Carousel Navigation */
-
 .rb-carousel .rb-carousel-nav-btn {
 
   display: none;

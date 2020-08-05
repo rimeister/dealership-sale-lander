@@ -52,11 +52,12 @@ Layout
 *******************************/
 
 .content {
-	float: left;
+  width: 100%;
 }
 
-.sidebar {
-	width: 200px;
-	float: right;
-}
+
+/*******************************
+Carousel Instance
+*******************************/
+
 
