@@ -110,7 +110,7 @@ Carousel
 Buttons
 *******************************/
 
-.btn {
+.rb-btn {
   height: 18px;
   background-color: #f0b31e;
   border-radius: .25rem;
@@ -132,12 +132,65 @@ Buttons
 
 }
 
-.btn-large {
+.rb-btn-large {
   height: 20px;
   font-size: 1.2em;
   font-weight: 700;
   line-height: 20px;
   padding: 15px 35px;
+}
+
+/*******************************
+Modal
+*******************************/
+
+.rb-modal {
+  overflow: hidden;
+  position: fixed;
+    top: 0;
+    left: 0;
+  z-index: 20;
+  height: 0;
+  width: 0;
+}
+
+.rb-modal-bg {
+  background-color: #000000;
+  opacity: 0;
+  position: absolute;
+    top: 0;
+    left: 0;
+  z-index: 13;
+  height: 100%;
+  width: 100%;
+  -webkit-transition: opacity 0.5s linear;
+  -o-transition: opacity 0.5s linear;
+  transition: opacity 0.5s linear;
+}
+
+.rb-modal-close-btn {
+  background: url('../images/modal-close-btn.png') center center no-repeat;
+  cursor: pointer;
+  position: absolute;
+    top: 0;
+    right: -31px;
+  z-index: 14;
+  height: 16px;
+  width: 16px;
+}
+
+@media only screen and (min-width: 767px) {
+
+  .rb-modal.active {
+    display: block;    
+    width: 100%;
+    height: 100%;
+  }
+
+  .rb-modal.active .rb-modal-bg {
+    opacity: 0.8;
+  }
+
 }
 
 
