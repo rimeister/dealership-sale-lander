@@ -104,21 +104,48 @@ header {
 }
 
 header .header-left {
-  width: 50%
+  width: 265px;
 }
 
 header .header-right {
-  width: 50%;
+  width: calc(100% - 265px);
   text-align: right;
-}
-
-.header-right .btn {
-  margin-top: 9px;
 }
 
 header .logo {
   width: 160px;
   height: auto;
+}
+
+header .header-icon {
+  width: 16px;
+  height: auto;
+}
+
+header .contact-list {
+  float: right;
+  font-size: 0.8em;
+  list-style: none;
+  margin-top: 13px;
+  margin-right: 15px;
+}
+
+header .contact-list li {
+  display: inline;
+  margin-right: 10px;
+}
+header .contact-list li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+header .contact-list li ul {
+  display: inline;
+}
+
+header .header-right .dealership-btn {
+  float: right;
+  margin-top: 9px;
 }
 
 .container {
@@ -201,8 +228,8 @@ Hero Text
   margin-bottom: 28px;
   text-transform: uppercase;
   font-weight: 600;
-  text-shadow: 0 2px 4px #000000;
-  border-bottom: 2px solid #f0b31e;
+  text-shadow: 0 2px 3px #000000;
+  border-bottom: 3px solid #f0b31e;
   display: inline-block;
   padding-bottom: 15px;
 }
@@ -273,13 +300,43 @@ Carousel Instance
 *******************************/
 
 #cars-carousel {
-  margin-top: 20%;
-  margin-bottom: 0;
+  height: 100vh;
+  box-sizing: border-box;
+  margin: 0;
+  padding-top: 85px;
+  position: absolute;
+  top: 0;
 }
 
-#cars-carousel img {
-  max-width: 800px;
+#cars-carousel .rb-carousel-inner {
+  position: relative;
+  top: 300px;
+}
+
+#cars-carousel .rb-carousel-inner img {
+  max-width: 880px;
   margin: auto;
   display: block;
 }
+
+@media only screen and (min-width: 768px) {
+  #cars-carousel.rb-carousel .rb-carousel-nav-btn-left,  
+  #cars-carousel.rb-carousel .rb-carousel-nav-btn-right {
+    top: 550px;
+  }
+}
+
+#cars-carousel.rb-carousel .rb-carousel-nav-btn-left {
+  left: 20%;
+}
+
+#cars-carousel.rb-carousel .rb-carousel-nav-btn-right {
+  right: 20%;
+}
+
+#cars-carousel.rb-carousel .rb-carousel-nav-btn-left img, #cars-carousel.rb-carousel .rb-carousel-nav-btn-right img{
+  width: 45px;
+  opacity: 0.8;
+}
+
 
