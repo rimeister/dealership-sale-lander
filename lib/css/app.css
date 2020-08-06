@@ -152,11 +152,17 @@ header .contact-list li ul {
 }
 
 header .header-right .live-chat-btn {
-  background: none;
+  background-color: rgba(240,179,30,0);
   border: 1px solid #f0b31e;
   color: #f0b31e;
   float: right;
   margin-top: 9px;
+  transition: background-color 0.25s, color 0.25s;
+}
+
+header .header-right .live-chat-btn:hover {
+  background-color: rgba(240,179,30,1);
+  color: #fff;
 }
 
 .container {
@@ -369,16 +375,22 @@ Call To Action
 }
 
 .cta h3 {
-  width: 100%;
-  color: #fff;
-  font-size: 2.2em;
-  margin: 1.2em 0 0.6em;
-  text-shadow: 0px 1px 3px #333, 0px 1px 3px #000;
-  text-transform: capitalize;
+  background-color: #058ed9;
+  box-shadow: 0px 3px 4px rgba(0,0,0,0.6);
+  text-shadow: 0px 0px 2px rgba(39,39,39,0);
+  transition: /*text-shadow 0.125s,*/ background-color 0.125s;
+  letter-spacing: 0.0125em;
 }
 
 .cta-btn {
   background-color: #058ed9;
   box-shadow: 0px 3px 4px rgba(0,0,0,0.6);  
+  text-shadow: 0px 0px 2px rgba(39,39,39,0);
+  transition: /*text-shadow 0.125s,*/ background-color 0.125s;
+}
+
+.cta-btn:hover {
+  background-color: #0581c5;
+  /*text-shadow: 0px 0px 2px rgba(39,39,39,0.9);*/
 }
 
