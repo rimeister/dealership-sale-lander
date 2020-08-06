@@ -200,6 +200,23 @@ header .live-chat-btn:hover {
 
 @media only screen and (min-width: 768px) {
   
+  header .contact-list li {
+    display: inline;    
+    padding: 0;
+  }
+
+  header .contact-list > li:first-child {
+    display: inline;    
+  }
+
+  header .contact-list li.number-service {
+    display: inline;    
+  }
+
+}
+
+@media only screen and (min-width: 992px) {
+
   header {
     height: 85px;
     width: calc(100% - 265px);
@@ -218,19 +235,6 @@ header .live-chat-btn:hover {
     margin-right: 15px;
     order: 2;
     text-align: right;
-  }
-
-  header .contact-list li {
-    display: inline;    
-    padding: 0;
-  }
-
-  header .contact-list > li:first-child {
-    display: inline;    
-  }
-
-  header .contact-list li.number-service {
-    display: inline;    
   }
 
   header .contact-list svg path {
@@ -343,13 +347,13 @@ Hero Text
   text-transform: uppercase;
 }
 
-
 .offer-text-left {
-  width: 50%;
+  padding-left: 30px;
 }
 
-.offer-text-right {
+.offer-text-left, .offer-text-right {
   width: 50%;
+  box-sizing: border-box;
 }
 
 .hero-text h2 .above-percent-text {
@@ -378,7 +382,7 @@ Hero Text
 .hero-text h2 .no-finance-text {
   border-left: 2px solid #272727;
   display: block;
-  font-size: 1em;
+  font-size: 0.9em;
   padding-left: 30px;
 }
 
@@ -393,15 +397,39 @@ Hero Text
 @media only screen and (min-width: 768px) {
   .hero-text h1 {
     font-size: 4em;
+    margin-top: 0;
   }
 
   .hero-text h2 {
     font-size: 2.4em;
-    padding-left: 30px;
   }
 
   .hero-text h2 .percent-off-text {
     font-size: 2.2em;
+  }
+
+  .offer-text-left {
+    width: 47%;
+  }
+
+  .offer-text-right {
+    width: 53%;
+  }
+
+}
+
+@media only screen and (min-width: 992px) {
+
+  .hero-text h1 {
+    margin-top: 1em;
+  }
+
+  .hero-text h2 {
+    padding-left: 30px;
+  }
+
+  .hero-text h2 .no-finance-text {
+    font-size: 1em;
   }
 
   .offer-text-left {
