@@ -304,6 +304,7 @@ header .live-chat-btn:hover {
   padding-top: 85px;
 }
 
+
 /*******************************
 Hero Text
 *******************************/
@@ -459,20 +460,13 @@ Carousel Instance
 
 #cars-carousel .rb-carousel-inner {
   position: relative;
-  top: 300px;
+    top: 40%;
 }
 
 #cars-carousel .rb-carousel-inner img {
   max-width: 880px;
   margin: auto;
   display: block;
-}
-
-@media only screen and (min-width: 768px) {
-  #cars-carousel.rb-carousel .rb-carousel-nav-btn-left,  
-  #cars-carousel.rb-carousel .rb-carousel-nav-btn-right {
-    top: 550px;
-  }
 }
 
 #cars-carousel.rb-carousel .rb-carousel-nav-btn-left {
@@ -492,6 +486,18 @@ Carousel Instance
   display: none;
 }
 
+@media only screen and (min-width: 768px) {
+  #cars-carousel.rb-carousel .rb-carousel-nav-btn-left,  
+  #cars-carousel.rb-carousel .rb-carousel-nav-btn-right {
+    top: 550px;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  #cars-carousel .rb-carousel-inner {
+    top: 40%;
+  }
+}
 
 /*******************************
 Call To Action
