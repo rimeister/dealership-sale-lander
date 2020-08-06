@@ -131,3 +131,39 @@ Buttons
   line-height: 0.8em;
   padding: 17px 35px 15px;
 }
+
+
+/*******************************
+Breakpoint Check
+*******************************/
+
+#check-breakpoint {
+  height: 0;
+  width: 0;
+  overflow: hidden;
+  opacity: 0;
+}
+
+@media only screen and (min-width: 576px) {
+  #check-breakpoint {
+    opacity: 0.15;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  #check-breakpoint {
+    opacity: 0.25;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  #check-breakpoint {
+    opacity: 0.5;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  #check-breakpoint {
+    opacity: 0.75;
+  }
+}
