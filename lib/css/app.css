@@ -197,12 +197,14 @@ Hero Text
 }
 
 .hero-text h1 {
-  width: 100%;
   font-size: 4em;
   margin-bottom: 28px;
   text-transform: uppercase;
-  font-weight: 800;
+  font-weight: 600;
   text-shadow: 0 2px 4px #000000;
+  border-bottom: 2px solid #f0b31e;
+  display: inline-block;
+  padding-bottom: 15px;
 }
 
 .hero-text h2 {
@@ -243,8 +245,9 @@ Hero Text
 }
 
 .hero-text h2 .msrp-text {
+  max-width: 100px;
   float: left;
-  font-size: 0.4em;
+  font-size: 0.35em;
   line-height: 1.2em;
   padding-left: 7px;
   padding-top: 5px;
