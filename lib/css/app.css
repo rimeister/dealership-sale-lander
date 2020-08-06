@@ -72,6 +72,14 @@ h2 {
   margin: 1em 0;
 }
 
+h3 {
+  color: #ffffff;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2em;
+  font-weight: 600;
+  margin: 1em 0;
+}
+
 .text-center {
   text-align: center;
 }
@@ -89,7 +97,7 @@ body {
   position: absolute;
   width: 100%;
   height: 85px;
-
+  z-index: 2;
 }
 
 header {
@@ -143,7 +151,10 @@ header .contact-list li ul {
   display: inline;
 }
 
-header .header-right .dealership-btn {
+header .header-right .live-chat-btn {
+  background: none;
+  border: 1px solid #f0b31e;
+  color: #f0b31e;
   float: right;
   margin-top: 9px;
 }
@@ -215,6 +226,7 @@ Hero Text
   top: 10%;
   padding: 1px 0 0 0;
   text-align: center;
+  z-index: 1;
 }
 
 .hero-text {
@@ -281,10 +293,10 @@ Hero Text
 }
 
 .hero-text h2 .no-finance-text {
-  border-left: 2px solid #f0b31e;
+  border-left: 2px solid #272727;
   display: block;
   font-size: 1em;
-  padding-left: 20px;
+  padding-left: 30px;
 }
 
 .hero-text h2 .conditions-may-apply-text {
@@ -292,7 +304,7 @@ Hero Text
   font-size: 0.3em;
   font-weight: 400;
   margin-top: 15px;
-  padding-left: 20px;
+  padding-left: 30px;
 }
 
 /*******************************
@@ -306,6 +318,7 @@ Carousel Instance
   padding-top: 85px;
   position: absolute;
   top: 0;
+  z-index: 0;
 }
 
 #cars-carousel .rb-carousel-inner {
@@ -339,4 +352,33 @@ Carousel Instance
   opacity: 0.8;
 }
 
+#cars-carousel.rb-carousel .slide-caption {
+  display: none;
+}
+
+
+/*******************************
+Call To Action
+*******************************/
+
+.cta {
+  width: 100%;
+  position: absolute;
+  bottom: 80px;
+  text-align: center;  
+}
+
+.cta h3 {
+  width: 100%;
+  color: #fff;
+  font-size: 2.2em;
+  margin: 1.2em 0 0.6em;
+  text-shadow: 0px 1px 3px #333, 0px 1px 3px #000;
+  text-transform: capitalize;
+}
+
+.cta-btn {
+  background-color: #058ed9;
+  box-shadow: 0px 3px 4px rgba(0,0,0,0.6);  
+}
 
