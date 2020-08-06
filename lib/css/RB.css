@@ -175,3 +175,13 @@ Breakpoint Check
     opacity: 0.75;
   }
 }
+
+
+/*******************************
+Responsive
+*******************************/
+@media only screen and (min-width: 768px) {
+  .desktopHide {
+    display: none;
+  }
+}

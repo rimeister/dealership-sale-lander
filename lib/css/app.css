@@ -80,6 +80,10 @@ h3 {
   margin: 1em 0;
 }
 
+small, sub, sup { font-size: .83em }
+sub             { vertical-align: sub }
+sup             { vertical-align: super }
+
 .text-center {
   text-align: center;
 }
@@ -115,14 +119,27 @@ header {
 }
 
 header .logo {
-  width: 160px;
+  width: 120px;
   height: auto;
+  margin: 10px 15px;
   order: 1;
 }
 
 header .header-icon {
   width: 16px;
   height: auto;
+}
+
+header .header-icon.map-icon {
+  width: 10px;
+  position: relative;
+  top: 1px;
+}
+
+header .header-icon.phone-icon {
+  width: 14px;
+  position: relative;
+  top: 2px;
 }
 
 header .header-break {
@@ -137,12 +154,23 @@ header .contact-list {
   font-size: 0.8em;
   list-style: none;
   order: 4;
+  padding: 7px 0;
+  text-align: center;
 }
 
 header .contact-list li {
-  display: inline;
+  display: block;
   margin-right: 10px;
 }
+
+header .contact-list > li:first-child {
+  display: none;    
+}
+
+header .contact-list li.number-service {
+  display: none;    
+}
+
 header .contact-list li a {
   color: #fff;
   text-decoration: none;
@@ -153,11 +181,14 @@ header .contact-list li ul {
 }
 
 header .live-chat-btn {
+  height: 16px;
   background-color: rgba(240,179,30,0);
   border: 1px solid #f0b31e;
   color: #f0b31e;
-  line-height: 20px;
-  margin-top: 9px;
+  font-size: 0.8em;
+  line-height: 18px;
+  margin-top: 12px;
+  margin-right: 15px;
   order: 2;
   transition: background-color 0.25s, color 0.25s;
 }
@@ -168,6 +199,7 @@ header .live-chat-btn:hover {
 }
 
 @media only screen and (min-width: 768px) {
+  
   header {
     height: 85px;
     width: calc(100% - 265px);
@@ -175,6 +207,8 @@ header .live-chat-btn:hover {
   }
 
   header .logo {
+    width: 160px;    
+    margin: 0;
     order: 1;
   }
 
@@ -183,6 +217,20 @@ header .live-chat-btn:hover {
     margin-top: 13px;
     margin-right: 15px;
     order: 2;
+    text-align: right;
+  }
+
+  header .contact-list li {
+    display: inline;    
+    padding: 0;
+  }
+
+  header .contact-list > li:first-child {
+    display: inline;    
+  }
+
+  header .contact-list li.number-service {
+    display: inline;    
   }
 
   header .contact-list svg path {
@@ -272,7 +320,7 @@ Hero Text
 }
 
 .hero-text h1 {
-  font-size: 4em;
+  font-size: 2em;
   margin-bottom: 28px;
   text-transform: uppercase;
   font-weight: 600;
@@ -285,10 +333,10 @@ Hero Text
 .hero-text h2 {
   width: 100%;
   max-width: 1000px;
+  font-size: 1.6em;
   margin: auto;  
   box-sizing: border-box;
   display: flex;
-  padding-left: 30px;
   flex-direction: row;
   text-align: left;
   text-shadow: 0px 1px 4px #333, 0px 1px 4px #000;
@@ -297,12 +345,11 @@ Hero Text
 
 
 .offer-text-left {
-  width: 30%;
+  width: 50%;
 }
 
 .offer-text-right {
-  width: 70%;
-  padding-top: 20px;
+  width: 50%;
 }
 
 .hero-text h2 .above-percent-text {
@@ -315,7 +362,7 @@ Hero Text
 .hero-text h2 .percent-off-text {
   color: #ea3546;  
   float: left;
-  font-size: 2.2em;
+  font-size: 2.6em;
   text-shadow:1px 1px 2px #333, 1px 1px 2px #000;
 }
 
@@ -341,6 +388,31 @@ Hero Text
   font-weight: 400;
   margin-top: 15px;
   padding-left: 30px;
+}
+
+@media only screen and (min-width: 768px) {
+  .hero-text h1 {
+    font-size: 4em;
+  }
+
+  .hero-text h2 {
+    font-size: 2.4em;
+    padding-left: 30px;
+  }
+
+  .hero-text h2 .percent-off-text {
+    font-size: 2.2em;
+  }
+
+  .offer-text-left {
+    width: 30%;
+  }
+
+  .offer-text-right {
+    width: 70%;
+    padding-top: 20px;
+  }
+
 }
 
 /*******************************
@@ -400,14 +472,14 @@ Call To Action
 .cta {
   width: 100%;
   position: absolute;
-  bottom: 80px;
+  bottom: 25px;
   text-align: center;  
 }
 
 .cta h3 {
   width: 100%;
   color: #fff;
-  font-size: 2.2em;
+  font-size: 1.3em;
   margin: 1.2em 0 0.6em;
   text-shadow: 0px 1px 3px #333, 0px 1px 3px #000;
   text-transform: capitalize;
@@ -415,14 +487,35 @@ Call To Action
 
 .cta-btn {
   background-color: #058ed9;
-  box-shadow: 0px 3px 4px rgba(0,0,0,0.6);  
+  box-shadow: 0px 3px 4px rgba(0,0,0,0.6);
   letter-spacing: 0.0125em;
-  line-height: 24px;
+  line-height: 22px;
   text-shadow: 0px 0px 2px rgba(39,39,39,0);
   transition: background-color 0.125s;
+  height: 20px;
+  font-size: 1em;
+  padding: 12px 27px;
 }
 
 .cta-btn:hover {
   background-color: #0581c5;
+}
+
+@media only screen and (min-width: 768px) {
+  
+  .cta {
+    bottom: 80px;
+  }
+
+  .cta-btn {
+    line-height: 24px;
+    height: 20px;
+    font-size: 1.2em;
+    padding: 15px 35px;
+  }
+
+  .cta h3 {
+    font-size: 2.2em;
+  }
 }
 
