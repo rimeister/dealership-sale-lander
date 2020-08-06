@@ -76,6 +76,43 @@ body {
   background-color: #fff;
 }
 
+.header-row {
+  background-color: #2D2D2D;  
+  position: absolute;
+  width: 100%;
+  height: 85px;
+
+}
+
+header {
+  height: 85px;
+  display: flex;
+  flex-direction: row;
+  max-width: 1200px;
+  width: 100%;
+  box-sizing: border-box;
+  margin: auto;
+  padding: 15px;
+}
+
+header .header-left {
+  width: 50%
+}
+
+header .header-right {
+  width: 50%;
+  text-align: right;
+}
+
+.header-right .btn {
+  margin-top: 9px;
+}
+
+header .logo {
+  width: 160px;
+  height: auto;
+}
+
 .container {
   position: relative;
 }
@@ -89,17 +126,37 @@ body {
   z-index: -1;
 }
 
-.backgrounds > div {
+.backgrounds .bg-img {
   position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
   background-repeat: no-repeat;
-  background-position: center center;
+  background-position: bottom center;
   background-size: cover;
   opacity: 0;
   transition: opacity 0.75s;
+}
+
+.backgrounds .bg-img.bg-car {
+  background-image:url('../images/bg/background-car.jpg');
+}
+
+.backgrounds .bg-img.bg-truck {
+  background-image:url('../images/bg/background-truck.jpg');  
+}
+
+.backgrounds .bg-img.bg-suv {
+  background-image:url('../images/bg/background-suv.jpg');
+}
+
+.backgrounds .bg-gradient {
+  width: 100%;
+  height: 30%;
+  background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0));
+  position: absolute;
+  top: 85px;
 }
 
 .backgrounds > div.active {
@@ -107,18 +164,26 @@ body {
 }
 
 .heading {
+  width: 100%;
+  position: absolute;
+  top: 10%;
   padding: 1px 0 0 0;
+  text-align: center;
 }
 
 .heading h1 {
+  width: 100%;
   font-size: 4em;
-  text-align: center;
   text-transform: uppercase;
-  font-weight: 600;
+  font-weight: 800;
+  text-shadow: 0 2px 4px #000000;
 }
 
 .content {
   width: 100%;
+  height: 100vh;
+  box-sizing: border-box;
+  padding-top: 85px;
 }
 
 
@@ -128,6 +193,7 @@ Carousel Instance
 
 #cars-carousel {
   margin-top: 20%;
+  margin-bottom: 0;
 }
 
 #cars-carousel img {

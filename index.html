@@ -9,17 +9,32 @@
 <body>
 	<div class="container">
 		<div class="backgrounds">
-			<div style="background-image:url('lib/images/bg/background-car.jpg')" class="active"></div>
-			<div style="background-image:url('lib/images/bg/background-truck.jpg')"></div>
-			<div style="background-image:url('lib/images/bg/background-suv.jpg')"></div>
+			<div class="bg-img bg-car active"></div>
+			<div class="bg-img bg-truck"></div>
+			<div class="bg-img bg-suv"></div>
+			<div class="bg-gradient"></div>
 		</div>
-		<div class="row">
-			<div class="heading">
-				<h1>The Spring Clearout&nbsp;Sale</h1>
-			</div>
+		<div class="row header-row">
+			<header>
+				<div class="header-left">
+					<img src="lib/images/logo.svg" alt="Automotive Dealership Logo" class="logo">					
+				</div>
+				<div class="header-right">
+					<a class="btn" href="#">Find a Dealership</a>
+				</div>
+			</header>			
 		</div>
+
 		<div class="row">
 			<div class="content">
+				<div class="heading">
+					<h1>The Spring Clearout&nbsp;Sale</h1>
+					<h2>
+						<span class="above-percent">Up to </span>
+						<span class="percent-off">20%</span>
+						<span class="msrp-text">Off MSRP Price</span>
+					</h2>
+				</div>
 				<div class="rb-carousel loading" id="cars-carousel">
 					<div class="rb-carousel-inner">
 						<div class="slide">
