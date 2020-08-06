@@ -111,25 +111,33 @@ Buttons
 *******************************/
 
 .btn {
+  height: 18px;
   background-color: #f0b31e;
-  border-radius: 5px;
+  border-radius: .25rem;
   color: #fff;
   display: inline-block;
   font-family: 'Istok Web', sans-serif;
-  font-size: 0.8em;
+  font-size: 1rem;
+  line-height: 18px;
   font-weight: 400;
-  padding: 12px 15px 10px;
+  padding: 10px 15px;
   text-align: center;
   text-decoration: none;
   text-transform: uppercase;
-  line-height: 14px;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
 }
 
 .btn-large {
+  height: 20px;
   font-size: 1.2em;
   font-weight: 700;
-  line-height: 0.8em;
-  padding: 17px 35px 15px;
+  line-height: 20px;
+  padding: 15px 35px;
 }
 
 
