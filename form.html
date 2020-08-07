@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Automotive Dealership Clearout Sale</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+    <link href="https://fonts.googleapis.com/css2?family=Istok+Web:ital,wght@0,400;0,700;1,400;1,700&family=Montserrat:wght@600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="lib/css/RB.css">
+    <link rel="stylesheet" type="text/css" href="lib/css/app.css">
+    <style type="text/css">
+    body {
+        background-color: #333;
+    }
+    #form-parent {
+        width: 800px;
+        background: #fff;
+        margin: 60px auto;
+        padding: 15px;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="form-parent">
+        <form action="action_page.php" id="my-form">
+            <div class="rb-form-container">
+                <div class="row">
+                    <div>
+                        <label for="fname">First Name</label>
+                    </div>
+                    <div>
+                        <input type="text" id="fname" name="firstname" placeholder="Your name..">
+                    </div>
+                </div>
+                <div class="rb-form-row">
+                    <div>
+                        <label for="lname">Last Name</label>
+                    </div>
+                    <div>
+                        <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+                    </div>
+                </div>
+                <div class="rb-form-row">
+                    <div>
+                        <label for="country">Country</label>
+                    </div>
+                    <div>
+                        <select id="country" name="country">
+                            <option value="australia">Australia</option>
+                            <option value="canada">Canada</option>
+                            <option value="usa">USA</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="rb-form-row">
+                    <div>
+                        <label for="subject">Subject</label>
+                    </div>
+                    <div>
+                        <textarea id="subject" name="subject" placeholder="Write something.." class="message-area"></textarea>
+                    </div>
+                </div>
+                <div class="rb-form-row">
+                    <input type="submit" value="Submit">
+                </div>
+            </div>
+        </form>
+    </div>
+    <script type="text/javascript" src="lib/js/RB.js"></script>
+    <script type="text/javascript" src="lib/js/app.js"></script>
+    <script type="text/javascript">
+    var myForm = document.getElementBy('my-form');
+    </script>
+</body>
+
+</html>
