@@ -77,6 +77,13 @@
         }
     });
 
+    var myAjax = new RB.Ajax();
+
+    console.log(myAjax);
+
+    myAjax.get('https://jsonplaceholder.typicode.com/posts',function(response){
+        console.log(JSON.parse(response));
+    });
 
     </script>
 </body>
