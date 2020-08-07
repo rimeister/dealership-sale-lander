@@ -196,16 +196,25 @@ Modal
 }
 
 .rb-modal-inner {
+  opacity: 0;
   width: 100%;
   max-width: 800px;
   background-color: #fff;
   margin: auto;
   position: relative;
+  top: 100px;
+  transition: opacity 0.5s, top 0.5s;
+}
+
+.rb-modal-inner.active {
+  opacity: 1;
+  top: 0px;
 }
 
 .rb-modal-content {
   width: 100%;
   background-color: #fff;
+  padding: 15px;
 }
 
 @media only screen and (min-width: 768px) {

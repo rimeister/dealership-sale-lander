@@ -73,7 +73,7 @@ h2 {
 }
 
 h3 {
-  color: #ffffff;
+  color: #000000;
   font-family: 'Montserrat', sans-serif;
   font-size: 2em;
   font-weight: 600;
@@ -557,5 +557,15 @@ Call To Action
   .cta h3 {
     font-size: 2.2em;
   }
+}
+
+
+/*******************************
+Book a Test Drive Modal
+*******************************/
+
+#test-drive-modal h3 {
+  margin-top: 15px;
+  text-align: center;
 }
 
