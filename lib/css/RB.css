@@ -10,8 +10,14 @@ Carousel
     position: relative;
 }
 
+/*
 .rb-carousel.transition .rb-carousel-inner {
-    transition: margin-left 0.5s ease;
+    transition: left 0.5s ease;
+}
+*/
+
+.rb-carousel .rb-carousel-inner.sliding {
+    transition: left 0.5s ease;
 }
 
 .rb-carousel.loading .slide {
