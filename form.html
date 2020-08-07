@@ -73,9 +73,11 @@
     var myForm = new RB.Form({
         el: formEle,
         onFormSubmit: function(formData,showSuccessMsg,showErrorMsg) {
-
+            console.log(formData);
         }
     });
+
+    myForm.init();
 
     var myAjax = new RB.Ajax();
 
