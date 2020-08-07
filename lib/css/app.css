@@ -288,7 +288,7 @@ header .live-chat-btn:hover {
 .backgrounds .bg-gradient {
   width: 100%;
   height: 30%;
-  background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0));
+  background-image: linear-gradient(rgba(58, 107, 176,0.5), rgba(58, 107, 176,0));
   position: absolute;
   top: 85px;
 }
@@ -349,7 +349,6 @@ Hero Text
 }
 
 .offer-text-left {
-  padding-left: 30px;
 }
 
 .offer-text-left, .offer-text-right {
@@ -411,6 +410,7 @@ Hero Text
 
   .offer-text-left {
     width: 47%;
+    padding-left: 30px;
   }
 
   .offer-text-right {
@@ -426,7 +426,7 @@ Hero Text
   }
 
   .hero-text h2 {
-    padding-left: 30px;
+    padding-left: 20px;
   }
 
   .hero-text h2 .no-finance-text {
@@ -434,11 +434,11 @@ Hero Text
   }
 
   .offer-text-left {
-    width: 30%;
+    width: 33%;
   }
 
   .offer-text-right {
-    width: 70%;
+    width: 67%;
     padding-top: 20px;
   }
 
@@ -460,7 +460,7 @@ Carousel Instance
 
 #cars-carousel .rb-carousel-inner {
   position: relative;
-    top: 40%;
+    top: 50%;
 }
 
 #cars-carousel .rb-carousel-inner img {
@@ -494,6 +494,12 @@ Carousel Instance
 }
 
 @media only screen and (min-width: 992px) {
+
+  #cars-carousel.rb-carousel .rb-carousel-nav-btn-left,  
+  #cars-carousel.rb-carousel .rb-carousel-nav-btn-right {
+    top: 740px;
+  }
+
   #cars-carousel .rb-carousel-inner {
     top: 40%;
   }
