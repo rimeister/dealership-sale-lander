@@ -26,26 +26,26 @@
             <div class="rb-form-container">
                 <div class="row">
                     <div>
-                        <label for="fname">First Name</label>
+                        <label for="title">First Name</label>
                     </div>
                     <div>
-                        <input type="text" id="fname" name="firstname" placeholder="Your name..">
+                        <input type="text" id="title" name="title" placeholder="Title">
                     </div>
                 </div>
-                <div class="rb-form-row">
+<!--                 <div class="rb-form-row">
                     <div>
                         <label for="lname">Last Name</label>
                     </div>
                     <div>
                         <input type="text" id="lname" name="lastname" placeholder="Your last name..">
                     </div>
-                </div>
+                </div> -->
                 <div class="rb-form-row">
                     <div>
-                        <label for="country">Country</label>
+                        <label for="body">Country</label>
                     </div>
                     <div>
-                        <select id="country" name="country">
+                        <select id="body" name="body">
                             <option value="australia">Australia</option>
                             <option value="canada">Canada</option>
                             <option value="usa">USA</option>
@@ -54,10 +54,10 @@
                 </div>
                 <div class="rb-form-row">
                     <div>
-                        <label for="subject">Subject</label>
+                        <label for="userId">Subject</label>
                     </div>
                     <div>
-                        <textarea id="subject" name="subject" placeholder="Write something.." class="message-area"></textarea>
+                        <textarea id="userId" name="userId" placeholder="Write something.." class="message-area"></textarea>
                     </div>
                 </div>
                 <div class="rb-form-row">
@@ -69,34 +69,46 @@
     <script type="text/javascript" src="lib/js/RB.js"></script>
     <script type="text/javascript" src="lib/js/app.js"></script>
     <script type="text/javascript">
+
+    var myAjax = new RB.Ajax();
+
     var formEle = document.getElementById('my-form');
     var myForm = new RB.Form({
         el: formEle,
         onFormSubmit: function(formData,showSuccessMsg,showErrorMsg) {
-            console.log(formData);
+
+            // // TEMP: Just need this data for the placeholder endpoint I'm using
+            // var tempData = {
+            //   title: 'foo',
+            //   body: 'bar',
+            //   userId: 1
+            // };
+            
+            // var dataString = JSON.stringify(tempData);
+
+            // Submit the A
+            myAjax.submit(
+                'https://jsonplaceholder.typicode.com/posts',
+                'post',
+                formData,
+                // Success callback
+                function(response){
+                    showSuccessMsg();
+                    console.log('Success!');
+                    console.log(JSON.parse(response));
+                },
+                // Error callback
+                function(response){
+                    showErrorMsg();
+                    console.log(response);
+                }
+            );
+
         }
     });
 
     myForm.init();
 
-
-    var myAjax = new RB.Ajax();
-
-    myAjax.submit(
-        'https://jsonplaceholder.typicode.com/posts',
-        'post',
-        JSON.stringify({
-          title: 'foo',
-          body: 'bar',
-          userId: 1
-        }),
-        function(response){
-            console.log(JSON.parse(response));
-        },
-        function(response) {
-            console.log('Something went wrong');
-        }
-    );
 
     </script>
 </body>
