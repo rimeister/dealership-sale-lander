@@ -69,7 +69,17 @@
     <script type="text/javascript" src="lib/js/RB.js"></script>
     <script type="text/javascript" src="lib/js/app.js"></script>
     <script type="text/javascript">
-    var myForm = document.getElementBy('my-form');
+    var formEle = document.getElementBy('my-form');
+    var myForm = new RB.Form({
+        el: formEle,
+        onFormSubmit: function(formData,showSuccessMsg,showErrorMsg) {
+
+            
+
+        }
+    });
+
+
     </script>
 </body>
 
