@@ -79,11 +79,24 @@
 
     var myAjax = new RB.Ajax();
 
-    console.log(myAjax);
-
+    /*
     myAjax.get('https://jsonplaceholder.typicode.com/posts',function(response){
         console.log(JSON.parse(response));
     });
+    */
+
+    myAjax.submit(
+        'https://jsonplaceholder.typicode.com/posts',
+        'post',
+        JSON.stringify({
+          title: 'foo',
+          body: 'bar',
+          userId: 1
+        }),
+        function(response){
+            console.log(JSON.parse(response));
+        }
+    );
 
     </script>
 </body>
