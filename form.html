@@ -79,13 +79,8 @@
 
     myForm.init();
 
-    var myAjax = new RB.Ajax();
 
-    /*
-    myAjax.get('https://jsonplaceholder.typicode.com/posts',function(response){
-        console.log(JSON.parse(response));
-    });
-    */
+    var myAjax = new RB.Ajax();
 
     myAjax.submit(
         'https://jsonplaceholder.typicode.com/posts',
@@ -97,6 +92,9 @@
         }),
         function(response){
             console.log(JSON.parse(response));
+        },
+        function(response) {
+            console.log('Something went wrong');
         }
     );
 
