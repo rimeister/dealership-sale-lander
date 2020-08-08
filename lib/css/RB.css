@@ -4,17 +4,11 @@ Carousel
 
 .rb-carousel {
     width: 100%;
-    /*border: 1px solid #9aa2b1;*/
     margin: 20px auto;
     overflow: hidden;
     position: relative;
 }
 
-/*
-.rb-carousel.transition .rb-carousel-inner {
-    transition: left 0.5s ease;
-}
-*/
 
 .rb-carousel .rb-carousel-inner.sliding {
     transition: left 0.5s ease;
@@ -27,7 +21,6 @@ Carousel
 
 .rb-carousel .slide {
     float: left;
-    /*padding: 0 15px;*/
 }
 
 .rb-carousel .slide img {
@@ -280,12 +273,6 @@ Modal
 
 }
 
-@media only screen and (min-width: 992px) {
-  .rb-modal-close-btn {
-/*    top: -60px;
-    right: -25px;*/
-  }
-}
 
 /*******************************
 Form
@@ -343,7 +330,6 @@ Form
 }
 
 /* Error messages */
-
 .rb-form .rb-form-error {
   color: #CC0000;
   position: absolute;
