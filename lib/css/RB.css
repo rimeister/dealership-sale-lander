@@ -160,6 +160,10 @@ Buttons
 Modal
 *******************************/
 
+.rb-modal-open {
+  overflow: hidden;
+}
+
 .rb-modal {
   display: none;
   overflow: hidden;
