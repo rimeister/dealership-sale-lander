@@ -70,10 +70,7 @@ Carousel
 
 /* Carousel Navigation */
 .rb-carousel .rb-carousel-nav-btn {
-
-  display: none;
-  opacity: 0;
-  top: 45px;
+  top: 66%;
   transition: opacity 0.5s ease;
 
   height: 30px;
@@ -96,11 +93,23 @@ Carousel
   right: 15px;
 }
 
+@media only screen and (max-width: 768px) {
+  .rb-carousel.nav-active .rb-carousel-nav-btn {
+    display: inline-block !important;    
+  }
+}
+
 @media only screen and (min-width: 992px) {
 
-    .rb-carousel .rb-carousel-nav-btn {
-        top: 78px;  
-    }
+  .rb-carousel .rb-carousel-nav-btn {
+      display: none;
+      opacity: 0;
+      top: 78px;
+  }
+
+  .rb-carousel .rb-carousel-nav-btn img {
+    width: 55px;
+  }
 
 }
 
@@ -109,6 +118,14 @@ Carousel
     .rb-carousel .rb-carousel-nav-btn {
         top: 93px;  
     }
+
+  .rb-carousel .rb-carousel-nav-btn-left {
+    left: 60px;
+  }
+
+  .rb-carousel .rb-carousel-nav-btn-right {
+    right: 60px;
+  }
 
 }
 
@@ -460,6 +477,14 @@ Responsive
 *******************************/
 @media only screen and (min-width: 768px) {
   .desktopHide {
+    display: none;
+  }
+
+}
+
+@media only screen and (min-width: 1200px) {
+
+  .hideXl {
     display: none;
   }
 }

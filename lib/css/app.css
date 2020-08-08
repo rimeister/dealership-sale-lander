@@ -208,10 +208,11 @@ header .live-chat-btn:hover {
   header .contact-list li {
     display: inline;    
     padding: 0;
+    text-align: center;
   }
 
   header .contact-list > li:first-child {
-    display: inline;    
+    display: block;    
   }
 
   header .contact-list li.number-service {
@@ -242,6 +243,10 @@ header .live-chat-btn:hover {
     text-align: right;
   }
 
+  header .contact-list > li {
+    display: block;
+  }
+
   header .contact-list svg path {
     fill: #f0b31e;
   }
@@ -251,6 +256,23 @@ header .live-chat-btn:hover {
   }
 
 }
+
+@media only screen and (min-width: 992px) {
+
+  header .contact-list > li {
+    display: block;
+  }
+
+}
+
+@media only screen and (min-width: 1200px) {
+
+  header .contact-list > li, header .contact-list > li:first-child {
+    display: inline;
+  }
+
+}
+
 
 .container {
   position: relative;
@@ -264,6 +286,8 @@ header .live-chat-btn:hover {
   left: 0;
   z-index: -1;
 }
+
+
 
 .backgrounds .bg-img {
   position: absolute;
@@ -309,6 +333,13 @@ header .live-chat-btn:hover {
   padding-top: 85px;
 }
 
+
+
+@media only screen and (min-width: 992px) {
+  .backgrounds {
+    top: -10%;
+  }
+}
 
 /*******************************
 Hero Text
@@ -454,7 +485,7 @@ Carousel Instance
 *******************************/
 
 #cars-carousel {
-  height: 100vh;
+  /*height: 100vh;*/
   box-sizing: border-box;
   margin: 0;
   padding-top: 85px;
@@ -474,16 +505,7 @@ Carousel Instance
   display: block;
 }
 
-#cars-carousel.rb-carousel .rb-carousel-nav-btn-left {
-  left: 20%;
-}
-
-#cars-carousel.rb-carousel .rb-carousel-nav-btn-right {
-  right: 20%;
-}
-
 #cars-carousel.rb-carousel .rb-carousel-nav-btn-left img, #cars-carousel.rb-carousel .rb-carousel-nav-btn-right img{
-  width: 45px;
   opacity: 0.8;
 }
 
@@ -492,23 +514,45 @@ Carousel Instance
 }
 
 @media only screen and (min-width: 768px) {
-  #cars-carousel.rb-carousel .rb-carousel-nav-btn-left,  
-  #cars-carousel.rb-carousel .rb-carousel-nav-btn-right {
-    top: 550px;
+  #cars-carousel.rb-carousel .rb-carousel-nav-btn-left {
+    left: 30px;
   }
+
+  #cars-carousel.rb-carousel .rb-carousel-nav-btn-right {
+    right: 30px;
+  }
+
+  #cars-carousel .rb-carousel-inner {
+    top: 40%;
+  }
+
 }
 
 @media only screen and (min-width: 992px) {
 
   #cars-carousel.rb-carousel .rb-carousel-nav-btn-left,  
   #cars-carousel.rb-carousel .rb-carousel-nav-btn-right {
-    top: 740px;
+    top: 61%;  
   }
 
   #cars-carousel .rb-carousel-inner {
-    top: 40%;
+    top: 35%;  
   }
 }
+
+@media only screen and (min-width: 1200px) {
+
+  #cars-carousel.rb-carousel .rb-carousel-nav-btn-left {
+    left: 200px;
+  } 
+
+  #cars-carousel.rb-carousel .rb-carousel-nav-btn-right {
+    right: 200px;
+  }
+
+}
+
+
 
 /*******************************
 Call To Action
@@ -517,13 +561,14 @@ Call To Action
 .cta {
   width: 100%;
   position: absolute;
-  bottom: 25px;
+  bottom: 9%; 
   text-align: center;  
 }
 
-.cta h3 {
+.cta .cta-text {
   width: 100%;
   color: #fff;
+  display: none;
   font-size: 1.3em;
   margin: 1.2em 0 0.6em;
   text-shadow: 0px 1px 3px #333, 0px 1px 3px #000;
@@ -549,20 +594,40 @@ Call To Action
 @media only screen and (min-width: 768px) {
   
   .cta {
-    bottom: 80px;
+    bottom: 60px;
   }
 
   .cta-btn {
     line-height: 24px;
     height: 20px;
     font-size: 1.2em;
+    margin-top: 30px;
     padding: 15px 35px;
   }
 
-  .cta h3 {
+  .cta .cta-text {
+    display: inline-block;
     font-size: 2.2em;
   }
 }
+
+
+@media only screen and (min-width: 992px) {
+  
+/*  .cta {
+    bottom: 60px;
+  }
+*/
+  .cta-btn {
+    margin-top: 0;
+  }
+
+/*  .cta .cta-text {
+    display: inline-block;
+    font-size: 2.2em;
+  }*/
+}
+
 
 
 /*******************************
@@ -600,6 +665,7 @@ Book a Test Drive Form
   box-sizing: border-box;
   float: left;
   text-align: right;
+  font-size: 0.9em;
 }
 
 .rb-form .opt-in-group input {
