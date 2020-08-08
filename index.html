@@ -106,50 +106,56 @@
     </div>
 
    	<div id="test-drive-modal">
-        <h3>Book a Test Drive</h3>
         <form action="action_page.php" id="test-drive-form">
-            <div class="rb-form-container">
-                <div class="row">
+            <div class="rb-form-header">
+                <h3>Book a Test Drive</h3>                
+            </div>
 
+            <div class="rb-form-container">
+                <div class="rb-form-row">
                     <div class="form-group">
                         <label for="title">First Name</label>
-                        <input type="text" id="title" name="title" placeholder="Title" required>
+                        <input type="text" id="title" name="title" placeholder="First Name..." required>                    </div>
+                    <div class="form-group">
+                        <label for="userId">Last Name</label>
+                        <input type="text" id="userId" name="userId" placeholder="Last Name..." required>
                     </div>
                 </div>
                 <div class="rb-form-row">
                     <div class="form-group">
-                        <label for="lname">Last Name</label>
-                        <input type="text" id="lname" name="lastname" placeholder="Your last name..">
-                    </div>
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="Email Address..." required>                    </div>
                     <div class="form-group">
-                        <label for="lname">Last Name</label>
-                        <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+                        <label for="lname">Phone Number</label>
+                        <input type="tel" id="lname" name="lastname" placeholder="Phone Number..." required>
                     </div>
                 </div>
                 <div class="rb-form-row">
                     <div class="form-group">
-                        <label for="body">Country</label>
-                        <select id="body" name="body" required>
-                            <option value="australia">Australia</option>
-                            <option value="canada">Canada</option>
-                            <option value="usa">USA</option>
+                        <label for="body">I am interested in test driving a...</label>
+                        <select id="body" name="body">
+                            <option value="car">Car</option>
+                            <option value="truck">Truck</option>
+                            <option value="suv">SUV</option>
                         </select>
                     </div>
-                </div>
-                <div class="rb-form-row">
                     <div class="form-group">
-                        <label for="userId">Subject</label>
-                        <textarea id="userId" name="userId" placeholder="Write something.." class="message-area" required></textarea>
+                        <label for="opt-in">Yes I would like to join the mailing list to hear about great deals on vehicles.</label>
+                        <input type="checkbox" name="opt-in" id="opt-in" value="mailing-opt-in">
                     </div>
                 </div>
-                <div class="rb-form-row">
-                    <div class="btn-wrapper">   
-                        <a href="#" class="rb-btn rb-form-cancel-btn">Cancel</a>
-                    </div>
-                    <div class="btn-wrapper"> 
-                        <input type="submit" value="Submit">
-                    </div>
+
+                <div class="rb-form-footer">
+                    <div class="rb-form-row">
+                        <div class="btn-wrapper">   
+                            <a href="#" class="rb-btn rb-form-cancel-btn">Cancel</a>
+                        </div>
+                        <div class="btn-wrapper"> 
+                            <input type="submit" value="Submit">
+                        </div>
+                    </div>                    
                 </div>
+
             </div>
         </form>
    	</div>
