@@ -25,27 +25,22 @@
         <form action="action_page.php" id="my-form">
             <div class="rb-form-container">
                 <div class="row">
-                    <div>
+
+                    <div class="form-group">
                         <label for="title">First Name</label>
-                    </div>
-                    <div>
-                        <input type="text" id="title" name="title" placeholder="Title">
+                        <input type="text" id="title" name="title" placeholder="Title" required>
                     </div>
                 </div>
-<!--                 <div class="rb-form-row">
-                    <div>
+                <div class="rb-form-row">
+                    <div class="form-group">
                         <label for="lname">Last Name</label>
-                    </div>
-                    <div>
                         <input type="text" id="lname" name="lastname" placeholder="Your last name..">
                     </div>
-                </div> -->
+                </div>
                 <div class="rb-form-row">
-                    <div>
+                    <div class="form-group">
                         <label for="body">Country</label>
-                    </div>
-                    <div>
-                        <select id="body" name="body">
+                        <select id="body" name="body" required>
                             <option value="australia">Australia</option>
                             <option value="canada">Canada</option>
                             <option value="usa">USA</option>
@@ -53,11 +48,9 @@
                     </div>
                 </div>
                 <div class="rb-form-row">
-                    <div>
+                    <div class="form-group">
                         <label for="userId">Subject</label>
-                    </div>
-                    <div>
-                        <textarea id="userId" name="userId" placeholder="Write something.." class="message-area"></textarea>
+                        <textarea id="userId" name="userId" placeholder="Write something.." class="message-area" required></textarea>
                     </div>
                 </div>
                 <div class="rb-form-row">
@@ -77,16 +70,7 @@
         el: formEle,
         onFormSubmit: function(formData,showSuccessMsg,showErrorMsg) {
 
-            // // TEMP: Just need this data for the placeholder endpoint I'm using
-            // var tempData = {
-            //   title: 'foo',
-            //   body: 'bar',
-            //   userId: 1
-            // };
-            
-            // var dataString = JSON.stringify(tempData);
-
-            // Submit the A
+            // Submit the form to the REST endpoint
             myAjax.submit(
                 'https://jsonplaceholder.typicode.com/posts',
                 'post',
