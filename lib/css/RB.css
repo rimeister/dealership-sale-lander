@@ -256,6 +256,7 @@ Form
 .rb-form .form-group {
   flex-grow: 1;
   padding: 0px 10px;
+  position: relative;
 }
 
 .rb-form .rb-form-row:after {
@@ -288,6 +289,14 @@ Form
 }
 
 /* Error messages */
+
+.rb-form .rb-form-error {
+  color: #CC0000;
+  position: absolute;
+  top: 20px;
+  right: 10px;
+}
+
 .rb-form .rb-has-error .rb-form-input {
   border: 1px solid #CC0000;
   padding: 11px;
