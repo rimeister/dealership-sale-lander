@@ -107,10 +107,50 @@
 
    	<div id="test-drive-modal">
         <h3>Book a Test Drive</h3>
-   		<form id="test-drive-form">
-            <label>First Name <input type="text" name="first-name"></label>
-            <label>Last Name <input type="text" name="last-name"></label>
-            <button type="submit">Submit</button>
+        <form action="action_page.php" id="test-drive-form">
+            <div class="rb-form-container">
+                <div class="row">
+
+                    <div class="form-group">
+                        <label for="title">First Name</label>
+                        <input type="text" id="title" name="title" placeholder="Title" required>
+                    </div>
+                </div>
+                <div class="rb-form-row">
+                    <div class="form-group">
+                        <label for="lname">Last Name</label>
+                        <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+                    </div>
+                    <div class="form-group">
+                        <label for="lname">Last Name</label>
+                        <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+                    </div>
+                </div>
+                <div class="rb-form-row">
+                    <div class="form-group">
+                        <label for="body">Country</label>
+                        <select id="body" name="body" required>
+                            <option value="australia">Australia</option>
+                            <option value="canada">Canada</option>
+                            <option value="usa">USA</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="rb-form-row">
+                    <div class="form-group">
+                        <label for="userId">Subject</label>
+                        <textarea id="userId" name="userId" placeholder="Write something.." class="message-area" required></textarea>
+                    </div>
+                </div>
+                <div class="rb-form-row">
+                    <div class="btn-wrapper">   
+                        <a href="#" class="rb-btn rb-form-cancel-btn">Cancel</a>
+                    </div>
+                    <div class="btn-wrapper"> 
+                        <input type="submit" value="Submit">
+                    </div>
+                </div>
+            </div>
         </form>
    	</div>
     <script type="text/javascript" src="lib/js/RB.js"></script>
