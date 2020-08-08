@@ -108,7 +108,8 @@
    	<div id="test-drive-modal">
         <form action="action_page.php" id="test-drive-form">
             <div class="rb-form-header">
-                <h3>Book a Test Drive</h3>                
+                <h3>Book a Test Drive</h3>
+                <p>One of our reps will get in touch with you to schedule a test drive.</p>
             </div>
 
             <div class="rb-form-container">
@@ -124,7 +125,8 @@
                 <div class="rb-form-row">
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="email" id="email" name="email" placeholder="Email Address..." required>                    </div>
+                        <input type="email" id="email" name="email" placeholder="Email Address..." required>                    
+                    </div>
                     <div class="form-group">
                         <label for="lname">Phone Number</label>
                         <input type="tel" id="lname" name="lastname" placeholder="Phone Number..." required>
@@ -139,9 +141,11 @@
                             <option value="suv">SUV</option>
                         </select>
                     </div>
-                    <div class="form-group">
-                        <label for="opt-in">Yes I would like to join the mailing list to hear about great deals on vehicles.</label>
-                        <input type="checkbox" name="opt-in" id="opt-in" value="mailing-opt-in">
+                    <div class="form-group opt-in-group">
+                        <div class="opt-in-wrapper">
+                            <label for="opt-in">Yes! I would like to join the mailing list to hear about great deals on&nbsp;vehicles.</label>
+                            <input type="checkbox" name="opt-in" id="opt-in" value="mailing-opt-in">                            
+                        </div>
                     </div>
                 </div>
 

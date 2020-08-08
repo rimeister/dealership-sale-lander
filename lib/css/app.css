@@ -580,14 +580,33 @@ Book a Test Drive Form
 
 /* These styles will override my default form styles in RB.Form */
 .rb-form .rb-form-header {
-  color: #fff;
-  margin-bottom: 20px;
-  padding: 1px 0;
 }
 
 .rb-form .rb-form-header h3 {
   color: #f0b31e;
   margin: 15px 0;
+}
+
+.rb-form .opt-in-group {
+
+}
+
+.rb-form .opt-in-group .opt-in-wrapper {
+  margin-top: 35px;
+}
+
+.rb-form .opt-in-group label {
+  width: calc(100% - 20px);
+  box-sizing: border-box;
+  float: left;
+  text-align: right;
+}
+
+.rb-form .opt-in-group input {
+  width: 20px;
+  box-sizing: border-box;
+  float: right;
+  margin-top: 20px;
 }
 
 .rb-form .rb-submit-btn {

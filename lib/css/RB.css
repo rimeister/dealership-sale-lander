@@ -180,6 +180,10 @@ Modal
   transition: opacity 0.5s linear;
 }
 
+.rb-modal.active .rb-modal-bg {
+  opacity: 0.8;
+}
+
 .rb-modal-wrapper {
   display: table-cell;
   max-width: 800px;
@@ -220,14 +224,12 @@ Modal
 .rb-modal-content {
   width: 100%;
   background-color: #fff;
+  box-sizing: border-box;
   padding: 15px;
 }
 
 @media only screen and (min-width: 768px) {
 
-  .rb-modal.active .rb-modal-bg {
-    opacity: 0.8;
-  }
 
 }
 
@@ -345,6 +347,12 @@ Form
 /* Add padding to container elements */
 .rb-form .container {
   padding: 16px;
+}
+
+.rb-form .rb-form-header {
+  margin-bottom: 20px;
+  padding: 1px 0;
+  text-align: center;
 }
 
 .rb-form .rb-form-footer {
