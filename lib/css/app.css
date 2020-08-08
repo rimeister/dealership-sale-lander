@@ -612,3 +612,15 @@ Book a Test Drive Form
 .rb-form .rb-submit-btn {
   background-color: #058ed9;  
 }
+
+@media only screen and (min-width: 768px) {
+
+  .rb-form .btn-wrapper:first-child {
+    order: 2;
+  }
+
+  .rb-form .btn-wrapper:last-child {
+    order: 1;
+  }
+
+}
