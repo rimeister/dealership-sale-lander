@@ -11,7 +11,7 @@ module.exports = function(grunt) {
     watch: {
       // Watch my CSS and JS, and run the minify and uglify tasks when they change
       files: ["src/lib/css/*.css","src/lib/js/*.js"],
-      tasks: ["cssmin","uglify"]
+      tasks: ["cssmin"/*,"uglify"*/]
     },
 
     cssmin: {
@@ -40,6 +40,9 @@ module.exports = function(grunt) {
 
 */
 
+
+  // Make a build task, transfer over HTML on watch too
+  // Add cache-busting
 
 
 
