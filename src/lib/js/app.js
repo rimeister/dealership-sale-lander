@@ -23,6 +23,15 @@ var APP = function(page) {
         // A slide can be shown multiple times, but I only want to track it once.
         var slidesShown = [];
 
+        // Get background images
+        var backgroundImageDivs = document.getElementsByClassName('backgrounds')[0].getElementsByClassName('bg-img');
+
+        // Add the "loaded" class to the background images
+        // This helps to defer css image loading until after the page has loaded 
+        for (var i=0; i < backgroundImageDivs.length; i++) {
+            backgroundImageDivs[i].classList.add('loaded');                
+        }
+
         // Create an RB.Carousel instance
         var carsCarousel = new RB.Carousel({
             el: carsCarouselEl,
@@ -31,8 +40,6 @@ var APP = function(page) {
             nav: true,
             callbackOnslideShown: function(slideIndex) {
 
-                // Get background images
-                var backgroundImageDivs = document.getElementsByClassName('backgrounds')[0].getElementsByClassName('bg-img');
 
                 // Adding setTimeout in order to delay the background change by 0.125 seconds
                 setTimeout(function(){
@@ -83,7 +90,7 @@ var APP = function(page) {
             }
         });
         carsCarousel.init();
-        // carsCarousel.autoSlide(4000);  
+        carsCarousel.autoSlide(4000);  
 
 
         /* Ajax */
@@ -372,6 +379,45 @@ var APP = function(page) {
         return false;
 
     }
+
+    function canUseWebP() {
+        var elem = document.createElement('canvas');
+
+        if (!!(elem.getContext && elem.getContext('2d'))) {
+            return elem.toDataURL('image/webp').indexOf('data:image/webp') == 0;
+        }
+
+        return false;
+    }
+
+    function WebpIsSupported(callback){
+        // If the browser doesn't has the method createImageBitmap, you can't display webp format
+        if(!window.createImageBitmap){
+            callback(false);
+            return;
+        }
+
+        // Base64 representation of a white point image
+        var webpdata = 'data:image/webp;base64,UklGRiQAAABXRUJQVlA4IBgAAAAwAQCdASoCAAEAAQAcJaQAA3AA/v3AgAA=';
+
+        // Retrieve the Image in Blob Format
+        fetch(webpdata).then(function(response){
+            return response.blob();
+        }).then(function(blob){
+            // If the createImageBitmap method succeeds, return true, otherwise false
+            createImageBitmap(blob).then(function(){
+                callback(true);
+            }, function(){
+                callback(false);
+            });
+        });
+    }
+
+    console.log('WEB P');
+
+    console.log(canUseWebP());
+
+    console.log(WebpIsSupported());
 
 }
 

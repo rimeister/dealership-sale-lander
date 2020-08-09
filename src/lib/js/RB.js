@@ -89,6 +89,7 @@ RB.Carousel.prototype = {
 
             // Set the width of each slide
             for (var i = 0; i < this.slides.length; i++) {
+                this.slides[i].classList.add('loaded');
                 this.slides[i].style.width = (100 / this.slides.length) + '%';
             }
 
