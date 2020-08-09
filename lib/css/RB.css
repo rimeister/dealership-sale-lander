@@ -376,15 +376,58 @@ Form
 /*  order: 2;*/
 }
 
+/* Hidden submit input */
+.rb-form-submit-input {
+  height: 0;
+  width: 0;
+  display: block;
+  overflow: hidden;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
 /* Loading, Success and Error states are shown in the Submit button */
-
-.rb-submit-btn:focus {
-
+.rb-form-submit-btn .loading {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.rb-form-submit-btn .loading div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border: 8px solid #fff;
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: #fff transparent transparent transparent;
+}
+.rb-form-submit-btn .loading div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.rb-form-submit-btn .loading div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.rb-form-submit-btn .loading div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
-.rb-submit-btn.loading {
 
-}
+
+
+
 
 .rb-form button:hover {
   opacity:1;

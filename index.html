@@ -109,7 +109,7 @@
     </div>
 
    	<div id="test-drive-modal">
-        <form action="action_page.php" id="test-drive-form">
+        <form id="test-drive-form" onsubmit="return false">
             <div class="rb-form-header">
                 <h3>Book a Test&nbsp;Drive</h3>
                 <p>One of our reps will get in touch with you to schedule a test drive.</p>
@@ -155,7 +155,7 @@
                 <div class="rb-form-footer">
                     <div class="rb-form-row">
                         <div class="btn-wrapper"> 
-                            <input type="submit" value="Submit">
+                            <a href="#" class="rb-btn rb-form-submit-btn">Submit</a>
                         </div>
                         <div class="btn-wrapper">   
                             <a href="#" class="rb-btn rb-form-cancel-btn">Cancel</a>

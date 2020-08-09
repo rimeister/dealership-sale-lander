@@ -675,7 +675,7 @@ Book a Test Drive Form
   margin-top: 20px;
 }
 
-.rb-form .rb-submit-btn, .rb-form .rb-submit-btn:focus {
+.rb-form .rb-form-submit-btn, .rb-form .rb-form-submit-btn:focus {
   background-color: #058ed9;  
 }
 
