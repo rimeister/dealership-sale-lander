@@ -109,11 +109,19 @@ module.exports = function(grunt) {
 
     cacheBust: {
 
-      options: {
-          baseDir: '<%= appPaths.dist %>',
-          assets: ['**/*.{png,jpg,jpeg,svg,css,js}'],
-      },
-      src: ['<%= appPaths.dist %>/index.html']
+      assets: {
+
+        options: {
+            baseDir: '<%= appPaths.dist %>',
+            assets: ['**/*.{png,jpg,jpeg,svg,css,js}'],
+        },
+        files: [{   
+            expand: true,
+            cwd: '<%= appPaths.dist %>',
+            src: ['**/*.html']
+        }]
+
+      }
 
     }
 
