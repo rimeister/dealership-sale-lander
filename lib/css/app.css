@@ -51,9 +51,12 @@ table {
 Typography
 *******************************/
 
+@import url('https://fonts.googleapis.com/css2?family=Istok+Web:ital,wght@0,400;1,400&family=Montserrat:wght@600;800&display=swap');
+
 body {
   font-size: 16px;
   font-family: 'Istok Web', sans-serif;
+  font-weight: 400;
 }
 
 h1 {
@@ -290,6 +293,7 @@ header .live-chat-btn:hover {
 
 
 .backgrounds .bg-img {
+  background-image:url('../images/bg/carousel-backgrounds-spritesheet-mobile.jpg');
   position: absolute;
   top: 0;
   right: 0;
@@ -302,17 +306,19 @@ header .live-chat-btn:hover {
   transition: opacity 0.75s;
 }
 
+.backgrounds .bg-img.bg-suv {
+  background-position: center 0;
+}
+
 .backgrounds .bg-img.bg-car {
-  background-image:url('../images/bg/background-car-mobile.jpg');
+  /*background-image:url('../images/bg/background-car-mobile.jpg');*/
+  /*background-position: */
 }
 
 .backgrounds .bg-img.bg-truck {
-  background-image:url('../images/bg/background-truck-mobile.jpg');  
+  /*background-image:url('../images/bg/background-truck-mobile.jpg');  */
 }
 
-.backgrounds .bg-img.bg-suv {
-  background-image:url('../images/bg/background-suv-mobile.jpg');
-}
 
 .backgrounds .bg-gradient {
   width: 100%;
@@ -336,16 +342,20 @@ header .live-chat-btn:hover {
 
 @media only screen and (min-width: 768px) {
 
+  .backgrounds .bg-img {
+    background-image:url('../images/bg/carousel-backgrounds-spritesheet.jpg');
+  }
+
   .backgrounds .bg-img.bg-car {
-    background-image:url('../images/bg/background-car.jpg');
+    /*background-image:url('../images/bg/background-car.jpg');*/
   }
 
   .backgrounds .bg-img.bg-truck {
-    background-image:url('../images/bg/background-truck.jpg');  
+    /*background-image:url('../images/bg/background-truck.jpg');  */
   }
 
   .backgrounds .bg-img.bg-suv {
-    background-image:url('../images/bg/background-suv.jpg');
+    /*background-image:url('../images/bg/background-suv.jpg');*/
   }
 
 }
@@ -521,6 +531,7 @@ Carousel Instance
 
 #cars-carousel .rb-carousel-inner .vehicle-slide {
   width: 100%;
+  background-image: url('../images/cars/cars-for-carousel-spritesheet-mobile.png');
   background-repeat: no-repeat;
   background-position: center center;
   background-size: contain;
@@ -528,16 +539,16 @@ Carousel Instance
 }
 
 #cars-carousel .rb-carousel-inner .vehicle-slide.suv-slide {
-  background-image: url('../images/cars/suv-mobile.png');
+  /*background-image: url('../images/cars/suv-mobile.png');*/
 
 }
 
 #cars-carousel .rb-carousel-inner .vehicle-slide.car-slide {
-  background-image: url('../images/cars/car-mobile.png');
+  /*background-image: url('../images/cars/car-mobile.png');*/
 }
 
 #cars-carousel .rb-carousel-inner .vehicle-slide.truck-slide {
-  background-image: url('../images/cars/truck-mobile.png');
+  /*background-image: url('../images/cars/truck-mobile.png');*/
 }
 
 #cars-carousel.rb-carousel .rb-carousel-nav-btn-left img, #cars-carousel.rb-carousel .rb-carousel-nav-btn-right img{
@@ -550,18 +561,21 @@ Carousel Instance
 
 @media only screen and (min-width: 768px) {
 
+  #cars-carousel .rb-carousel-inner .vehicle-slide {
+  background-image: url('../images/cars/cars-for-carousel-spritesheet.png');
+  }
 
   #cars-carousel .rb-carousel-inner .vehicle-slide.suv-slide {
-    background-image: url('../images/cars/suv.png');
+    /*background-image: url('../images/cars/suv.png');*/
 
   }
 
   #cars-carousel .rb-carousel-inner .vehicle-slide.car-slide {
-    background-image: url('../images/cars/car.png');
+    /*background-image: url('../images/cars/car.png');*/
   }
 
   #cars-carousel .rb-carousel-inner .vehicle-slide.truck-slide {
-    background-image: url('../images/cars/truck.png');
+    /*background-image: url('../images/cars/truck.png');*/
   }
 
   #cars-carousel.rb-carousel .rb-carousel-nav-btn-left {
@@ -601,7 +615,6 @@ Carousel Instance
   }
 
 }
-
 
 
 /*******************************
@@ -664,20 +677,11 @@ Call To Action
 
 @media only screen and (min-width: 992px) {
   
-/*  .cta {
-    bottom: 60px;
-  }
-*/
   .cta-btn {
     margin-top: 0;
   }
 
-/*  .cta .cta-text {
-    display: inline-block;
-    font-size: 2.2em;
-  }*/
 }
-
 
 
 /*******************************
