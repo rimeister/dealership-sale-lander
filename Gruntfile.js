@@ -7,15 +7,26 @@ module.exports = function(grunt) {
   grunt.initConfig({
   	pkg: grunt.file.readJSON('package.json'),
 
+    // Set up variable paths
+    appPaths: {
+      src: './src',
+      dist: './dist'
+    },
+
+    // Run these tasks in parallel
+    concurrent: {
+      dist: [
+        'imagemin',
+        'svgmin',
+        'htmlmin'
+      ]
+    },
+
     // Configure each module
     watch: {
       // Watch my CSS and JS, and run the minify and uglify tasks when they change
       files: ["src/lib/css/*.css","src/lib/js/*.js"],
-      tasks: ["cssmin"/*,"uglify"*/]
-    },
-
-    copy: {
-
+      tasks: ["cssmin","uglify"]
     },
 
     cssmin: {
@@ -26,47 +37,64 @@ module.exports = function(grunt) {
         },
         files: {
           'dist/app.min.css': [
-            './src/lib/css/RB.css',
-            './src/lib/css/app.css'
+            '<%= appPaths.src %>/lib/css/RB.css',
+            '<%= appPaths.src %>/lib/css/app.css'
           ]
         }
       }
 
-    }/*,
+    },
 
     uglify: {
-
-
+      options: { 
+          compress: true 
+      }, 
+      applib: { 
+          src: [ 
+            '<%= appPaths.src %>/lib/js/RB.js',
+            '<%= appPaths.src %>/lib/js/app.js'            
+          ], 
+          dest: '<%= appPaths.dist %>/app.min.js' 
+      } 
 
     },
 
+    imagemin: {
 
+      dist: {
+        files: [{
+          expand: true,
+          cwd: '<%= appPaths.src %>/lib/images/',
+          src: '**/*.{png,jpg,jpeg}',
+          dest: '<%= appPaths.dist %>'
+        }]
+      }
 
-*/
+    },
 
+    svgmin: {
+      dist: {
+        files: [{
+          expand: true,
+          cwd: '<%= appPaths.src %>/lib/images/',
+          src: '**/*.{.svg}',
+          dest: '<%= appPaths.dist %>'
+        }]
+      }
+    },
 
-  // Make a build task, transfer over HTML on watch too
-  // Transfer images
-  // Add cache-busting
-
-
-
-    /*
-    
-    less: {
-    	development: {
-    		options: {
-    			paths: [""]
-    		},
-    		files: {
-    			"dist/app.css" : "scr/lib/css/*"
-    		}
-    	}
+    htmlmin: {
+      dist: {
+        options: {
+        },
+        files: [{
+          expand: true,
+          cwd: '<%= appPaths.src %>',
+          src: '**/*.html',
+          dest: '<%= appPaths.dist %>'
+        }]
+      }
     }
-  */
-
-
-
 
   });
 
