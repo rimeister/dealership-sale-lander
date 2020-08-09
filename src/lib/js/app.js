@@ -418,7 +418,7 @@ var APP = function(page) {
     console.log(canUseWebP());
 
     console.log(WebpIsSupported());
-
+    
 }
 
 window.APP = APP;

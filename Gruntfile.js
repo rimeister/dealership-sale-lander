@@ -34,7 +34,7 @@ module.exports = function(grunt) {
         '<%= appPaths.src %>/lib/images/**/*.svg',
         '<%= appPaths.src %>/**/*.html'
       ],
-      tasks: ['clean','cssmin','uglify','imagemin','svgmin','htmlmin','cacheBust']
+      tasks: ['clean','copy','concat']
     },
 
     cssmin: {
@@ -44,7 +44,7 @@ module.exports = function(grunt) {
           banner: ''
         },
         files: {
-          'dist/app.min.css': [
+          'dist/lib/css/app.css': [
             '<%= appPaths.src %>/lib/css/RB.css',
             '<%= appPaths.src %>/lib/css/app.css'
           ]
@@ -69,7 +69,7 @@ module.exports = function(grunt) {
             '<%= appPaths.src %>/lib/js/RB.js',
             '<%= appPaths.src %>/lib/js/app.js'            
           ], 
-          dest: '<%= appPaths.dist %>/app.min.js' 
+          dest: '<%= appPaths.dist %>/lib/js/app.js' 
       } 
 
     },
@@ -80,7 +80,7 @@ module.exports = function(grunt) {
           expand: true,
           cwd: '<%= appPaths.src %>/lib/images/',
           src: '**/*.{png,jpg,jpeg}',
-          dest: '<%= appPaths.dist %>'
+          dest: '<%= appPaths.dist %>/lib/images'
         }]
       }
 
@@ -91,7 +91,7 @@ module.exports = function(grunt) {
           expand: true,
           cwd: '<%= appPaths.src %>/lib/images/',
           src: '**/*.svg',
-          dest: '<%= appPaths.dist %>'
+          dest: '<%= appPaths.dist %>/lib/images'
         }]
       }
     },
@@ -125,8 +125,27 @@ module.exports = function(grunt) {
 
       }
 
-    }
+    },
 
+    copy: {
+      main: {
+        expand: true,
+        cwd: '<%= appPaths.src %>',
+        src: '**/*.{html,svg,png,jpg,jpeg}',
+        dest: '<%= appPaths.dist %>',
+      },
+    },
+
+    concat: {
+      basic: {
+        src: ['<%= appPaths.src %>/lib/js/RB.js','<%= appPaths.src %>/lib/js/app.js'],
+        dest: '<%= appPaths.dist %>/lib/js/app.js',
+      },
+      extras: {
+        src: ['<%= appPaths.src %>/lib/css/RB.css','<%= appPaths.src %>/lib/css/app.css'],
+        dest: '<%= appPaths.dist %>/lib/css/app.css',
+      }
+    }
   });
 
   grunt.registerTask('default', ['clean','cssmin','uglify','imagemin','svgmin','htmlmin','cacheBust']);
