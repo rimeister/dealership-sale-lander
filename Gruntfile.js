@@ -32,7 +32,7 @@ module.exports = function(grunt) {
         '<%= appPaths.src %>/lib/images/**/*.svg',
         '<%= appPaths.src %>/**/*.html'
       ],
-      tasks: ['cssmin','uglify','imagemin','svgmin','htmlmin']
+      tasks: ['cssmin','uglify','imagemin','svgmin','htmlmin','cacheBust']
     },
 
     cssmin: {
@@ -105,14 +105,21 @@ module.exports = function(grunt) {
           dest: '<%= appPaths.dist %>'
         }]
       }
+    },
+
+    cacheBust: {
+
+      options: {
+          baseDir: '<%= appPaths.dist %>',
+          assets: ['**/*.{png,jpg,jpeg,svg,css,js}'],
+      },
+      src: ['<%= appPaths.dist %>/index.html']
+
     }
 
   });
 
-  // grunt.loadNpmTasks('grunt-contrib-watch');
-  // grunt.loadNpmTasks('grunt-contrib-less');
-
   grunt.registerTask('default', ['watch']);
-  grunt.registerTask('build', ['cssmin','uglify','imagemin','svgmin','htmlmin']);
+  grunt.registerTask('build', ['cssmin','uglify','imagemin','svgmin','htmlmin','cacheBust']);
 
 };
