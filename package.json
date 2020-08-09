@@ -2,7 +2,8 @@
   "name": "dealership-sale-lander",
   "version": "1.0.0",
   "description": "",
-  "author": "Riley Boyd",
+  "author": "",
+  "private": true,
   "main": "Gruntfile.js",
   "module": "main.js",
   "scripts": {
@@ -13,10 +14,18 @@
     "url": "git+ssh://git@bitbucket.org/rimeister/carousel-js.git"
   },
   "keywords": [],
-  "author": "",
   "license": "ISC",
   "homepage": "https://bitbucket.org/rimeister/carousel-js#readme",
   "dependencies": {
     "esm": "^3.2.25"
+  },
+  "devDependencies": {
+    "grunt": "^1.2.1",
+    "grunt-contrib-cssmin": "^3.0.0",
+    "grunt-contrib-jshint": "^2.1.0",
+    "grunt-contrib-qunit": "^4.0.0",
+    "grunt-contrib-uglify": "^5.0.0",
+    "grunt-contrib-watch": "^1.1.0",
+    "matchdep": "^2.0.0"
   }
 }
