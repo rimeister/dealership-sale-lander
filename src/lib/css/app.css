@@ -306,15 +306,15 @@ header .live-chat-btn:hover {
 }
 
 .backgrounds .bg-img.bg-car {
-  background-image:url('../images/bg/background-car-mobile.jpg');
+  background-image:url('./bg/background-car-mobile.jpg');
 }
 
 .backgrounds .bg-img.bg-truck {
-  background-image:url('../images/bg/background-truck-mobile.jpg');  
+  background-image:url('./bg/background-truck-mobile.jpg');  
 }
 
 .backgrounds .bg-img.bg-suv {
-  background-image:url('../images/bg/background-suv-mobile.jpg');
+  background-image:url('./bg/background-suv-mobile.jpg');
 }
 
 .backgrounds .bg-gradient {
@@ -340,15 +340,15 @@ header .live-chat-btn:hover {
 @media only screen and (min-width: 768px) {
 
   .backgrounds .bg-img.bg-car {
-    background-image:url('../images/bg/background-car.jpg');
+    background-image:url('./bg/background-car.jpg');
   }
 
   .backgrounds .bg-img.bg-truck {
-    background-image:url('../images/bg/background-truck.jpg');  
+    background-image:url('./bg/background-truck.jpg');  
   }
 
   .backgrounds .bg-img.bg-suv {
-    background-image:url('../images/bg/background-suv.jpg');
+    background-image:url('./bg/background-suv.jpg');
   }
 
 }
@@ -523,7 +523,7 @@ Carousel Instance
 
 #cars-carousel .rb-carousel-inner .vehicle-slide {
   width: 100%;
-  background-image: url('../images/cars/cars-for-carousel-spritesheet-mobile.png');
+  background-image: url('./cars/cars-for-carousel-spritesheet-mobile.png');
   background-repeat: no-repeat;
   background-size: cover;
   padding: 52% 0 0 0;
@@ -552,7 +552,7 @@ Carousel Instance
 @media only screen and (min-width: 768px) {
 
   #cars-carousel .rb-carousel-inner .vehicle-slide {
-  background-image: url('../images/cars/cars-for-carousel-spritesheet.png');
+  background-image: url('./cars/cars-for-carousel-spritesheet.png');
   }
 
   #cars-carousel.rb-carousel .rb-carousel-nav-btn-left {

@@ -47,7 +47,12 @@ module.exports = function(grunt) {
 
     uglify: {
       options: { 
-          compress: true 
+          compress: true,
+/*          mangle: {
+            toplevel: true,
+            properties: true
+          },*/
+          // wrap: true
       }, 
       applib: { 
           src: [ 
@@ -58,7 +63,6 @@ module.exports = function(grunt) {
       } 
 
     },
-
     imagemin: {
 
       dist: {
@@ -71,13 +75,12 @@ module.exports = function(grunt) {
       }
 
     },
-
     svgmin: {
       dist: {
         files: [{
           expand: true,
           cwd: '<%= appPaths.src %>/lib/images/',
-          src: '**/*.{.svg}',
+          src: '**/*.svg',
           dest: '<%= appPaths.dist %>'
         }]
       }
@@ -102,5 +105,6 @@ module.exports = function(grunt) {
   // grunt.loadNpmTasks('grunt-contrib-less');
 
   grunt.registerTask('default', ['watch']);
+  grunt.registerTask('build', ['cssmin','uglify','imagemin','svgmin','htmlmin']);
 
 };
