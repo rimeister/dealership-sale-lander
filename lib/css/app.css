@@ -303,15 +303,15 @@ header .live-chat-btn:hover {
 }
 
 .backgrounds .bg-img.bg-car {
-  background-image:url('../images/bg/background-car.jpg');
+  background-image:url('../images/bg/background-car-mobile.jpg');
 }
 
 .backgrounds .bg-img.bg-truck {
-  background-image:url('../images/bg/background-truck.jpg');  
+  background-image:url('../images/bg/background-truck-mobile.jpg');  
 }
 
 .backgrounds .bg-img.bg-suv {
-  background-image:url('../images/bg/background-suv.jpg');
+  background-image:url('../images/bg/background-suv-mobile.jpg');
 }
 
 .backgrounds .bg-gradient {
@@ -334,6 +334,21 @@ header .live-chat-btn:hover {
 }
 
 
+@media only screen and (min-width: 768px) {
+
+  .backgrounds .bg-img.bg-car {
+    background-image:url('../images/bg/background-car.jpg');
+  }
+
+  .backgrounds .bg-img.bg-truck {
+    background-image:url('../images/bg/background-truck.jpg');  
+  }
+
+  .backgrounds .bg-img.bg-suv {
+    background-image:url('../images/bg/background-suv.jpg');
+  }
+
+}
 
 @media only screen and (min-width: 992px) {
   .backgrounds {
@@ -513,16 +528,16 @@ Carousel Instance
 }
 
 #cars-carousel .rb-carousel-inner .vehicle-slide.suv-slide {
-  background-image: url('../images/cars/suv.png');
+  background-image: url('../images/cars/suv-mobile.png');
 
 }
 
 #cars-carousel .rb-carousel-inner .vehicle-slide.car-slide {
-  background-image: url('../images/cars/car.png');
+  background-image: url('../images/cars/car-mobile.png');
 }
 
 #cars-carousel .rb-carousel-inner .vehicle-slide.truck-slide {
-  background-image: url('../images/cars/truck.png');
+  background-image: url('../images/cars/truck-mobile.png');
 }
 
 #cars-carousel.rb-carousel .rb-carousel-nav-btn-left img, #cars-carousel.rb-carousel .rb-carousel-nav-btn-right img{
@@ -534,6 +549,21 @@ Carousel Instance
 }
 
 @media only screen and (min-width: 768px) {
+
+
+  #cars-carousel .rb-carousel-inner .vehicle-slide.suv-slide {
+    background-image: url('../images/cars/suv.png');
+
+  }
+
+  #cars-carousel .rb-carousel-inner .vehicle-slide.car-slide {
+    background-image: url('../images/cars/car.png');
+  }
+
+  #cars-carousel .rb-carousel-inner .vehicle-slide.truck-slide {
+    background-image: url('../images/cars/truck.png');
+  }
+
   #cars-carousel.rb-carousel .rb-carousel-nav-btn-left {
     left: 30px;
   }
