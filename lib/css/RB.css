@@ -395,6 +395,17 @@ Form
   position: relative;
   top: -4px;
 }
+
+.rb-form-submit-btn.rb-btn.success, .rb-form-submit-btn.rb-btn.success:focus {
+  background-color: #28a745;
+  font-size: 0.9em;
+}
+
+.rb-form-submit-btn.rb-btn.failure, .rb-form-submit-btn.rb-btn.failure:focus {
+  background-color: #DC3547;
+  font-size: 0.9em;
+}
+
 .rb-form-submit-btn .loading div {
   box-sizing: border-box;
   display: block;
