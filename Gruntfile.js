@@ -25,8 +25,14 @@ module.exports = function(grunt) {
     // Configure each module
     watch: {
       // Watch my CSS and JS, and run the minify and uglify tasks when they change
-      files: ["src/lib/css/*.css","src/lib/js/*.js"],
-      tasks: ["cssmin","uglify"]
+      files: [
+        '<%= appPaths.src %>/lib/css/*.css',
+        '<%= appPaths.src %>/lib/js/*.js',
+        '<%= appPaths.src %>/lib/images/**/*.{png,jpg,jpeg}',
+        '<%= appPaths.src %>/lib/images/**/*.svg',
+        '<%= appPaths.src %>/**/*.html'
+      ],
+      tasks: ['cssmin','uglify','imagemin','svgmin','htmlmin']
     },
 
     cssmin: {
@@ -52,7 +58,7 @@ module.exports = function(grunt) {
             toplevel: true,
             properties: true
           },*/
-          // wrap: true
+          wrap: 'APP'
       }, 
       applib: { 
           src: [ 
