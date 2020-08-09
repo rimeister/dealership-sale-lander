@@ -300,23 +300,21 @@ header .live-chat-btn:hover {
   bottom: 0;
   left: 0;
   background-repeat: no-repeat;
-  background-position: bottom center;
-  background-size: cover;
+  background-size: 100%;
   opacity: 0;
   transition: opacity 0.75s;
 }
 
 .backgrounds .bg-img.bg-suv {
-  background-position: center 0;
+  background-position: center top;
 }
 
 .backgrounds .bg-img.bg-car {
-  /*background-image:url('../images/bg/background-car-mobile.jpg');*/
-  /*background-position: */
+  background-position: center center;
 }
 
 .backgrounds .bg-img.bg-truck {
-  /*background-image:url('../images/bg/background-truck-mobile.jpg');  */
+  background-position: center bottom;
 }
 
 
@@ -533,22 +531,20 @@ Carousel Instance
   width: 100%;
   background-image: url('../images/cars/cars-for-carousel-spritesheet-mobile.png');
   background-repeat: no-repeat;
-  background-position: center center;
-  background-size: contain;
+  background-size: cover;
   padding: 52% 0 0 0;
 }
 
 #cars-carousel .rb-carousel-inner .vehicle-slide.suv-slide {
-  /*background-image: url('../images/cars/suv-mobile.png');*/
-
+  background-position: center top;
 }
 
 #cars-carousel .rb-carousel-inner .vehicle-slide.car-slide {
-  /*background-image: url('../images/cars/car-mobile.png');*/
+  background-position: center center;
 }
 
 #cars-carousel .rb-carousel-inner .vehicle-slide.truck-slide {
-  /*background-image: url('../images/cars/truck-mobile.png');*/
+  background-position: center bottom;
 }
 
 #cars-carousel.rb-carousel .rb-carousel-nav-btn-left img, #cars-carousel.rb-carousel .rb-carousel-nav-btn-right img{
@@ -563,19 +559,6 @@ Carousel Instance
 
   #cars-carousel .rb-carousel-inner .vehicle-slide {
   background-image: url('../images/cars/cars-for-carousel-spritesheet.png');
-  }
-
-  #cars-carousel .rb-carousel-inner .vehicle-slide.suv-slide {
-    /*background-image: url('../images/cars/suv.png');*/
-
-  }
-
-  #cars-carousel .rb-carousel-inner .vehicle-slide.car-slide {
-    /*background-image: url('../images/cars/car.png');*/
-  }
-
-  #cars-carousel .rb-carousel-inner .vehicle-slide.truck-slide {
-    /*background-image: url('../images/cars/truck.png');*/
   }
 
   #cars-carousel.rb-carousel .rb-carousel-nav-btn-left {
