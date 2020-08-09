@@ -14,6 +14,10 @@ module.exports = function(grunt) {
       tasks: ["cssmin"/*,"uglify"*/]
     },
 
+    copy: {
+
+    },
+
     cssmin: {
 
       sitecss: {
@@ -42,6 +46,7 @@ module.exports = function(grunt) {
 
 
   // Make a build task, transfer over HTML on watch too
+  // Transfer images
   // Add cache-busting
 
 
