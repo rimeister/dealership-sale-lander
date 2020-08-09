@@ -1,6 +1,4 @@
-var APP = APP || {};
-
-APP.init = function(page) {
+var APP = function(page) {
 
     if (page == 'home') {
 

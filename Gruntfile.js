@@ -54,10 +54,12 @@ module.exports = function(grunt) {
     uglify: {
       options: { 
           compress: true,
-/*          mangle: {
+          mangle: {
+            reserved: ['APP'], // Exclude mangling APP
             toplevel: true,
-            properties: true
-          },*/
+            // properties: true,
+            eval: true
+          },
           wrap: 'APP'
       }, 
       applib: { 
