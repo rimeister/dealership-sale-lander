@@ -21,7 +21,9 @@ module.exports = function(grunt) {
         'htmlmin'
       ]
     },
-
+    clean: {
+      dist: '<%= appPaths.dist %>'
+    },
     // Configure each module
     watch: {
       // Watch my CSS and JS, and run the minify and uglify tasks when they change
@@ -32,7 +34,7 @@ module.exports = function(grunt) {
         '<%= appPaths.src %>/lib/images/**/*.svg',
         '<%= appPaths.src %>/**/*.html'
       ],
-      tasks: ['cssmin','uglify','imagemin','svgmin','htmlmin','cacheBust']
+      tasks: ['clean','cssmin','uglify','imagemin','svgmin','htmlmin','cacheBust']
     },
 
     cssmin: {
@@ -127,7 +129,6 @@ module.exports = function(grunt) {
 
   });
 
-  grunt.registerTask('default', ['watch']);
-  grunt.registerTask('build', ['cssmin','uglify','imagemin','svgmin','htmlmin','cacheBust']);
+  grunt.registerTask('default', ['clean','cssmin','uglify','imagemin','svgmin','htmlmin','cacheBust']);
 
 };
