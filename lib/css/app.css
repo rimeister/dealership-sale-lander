@@ -293,30 +293,29 @@ header .live-chat-btn:hover {
 
 
 .backgrounds .bg-img {
-  background-image:url('../images/bg/carousel-backgrounds-spritesheet-mobile.jpg');
   position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
   background-repeat: no-repeat;
-  background-size: 100%;
+  background-position: bottom center;
+  background-size: cover;
   opacity: 0;
   transition: opacity 0.75s;
 }
 
-.backgrounds .bg-img.bg-suv {
-  background-position: center top;
-}
-
 .backgrounds .bg-img.bg-car {
-  background-position: center center;
+  background-image:url('../images/bg/background-car-mobile.jpg');
 }
 
 .backgrounds .bg-img.bg-truck {
-  background-position: center bottom;
+  background-image:url('../images/bg/background-truck-mobile.jpg');  
 }
 
+.backgrounds .bg-img.bg-suv {
+  background-image:url('../images/bg/background-suv-mobile.jpg');
+}
 
 .backgrounds .bg-gradient {
   width: 100%;
@@ -340,20 +339,16 @@ header .live-chat-btn:hover {
 
 @media only screen and (min-width: 768px) {
 
-  .backgrounds .bg-img {
-    background-image:url('../images/bg/carousel-backgrounds-spritesheet.jpg');
-  }
-
   .backgrounds .bg-img.bg-car {
-    /*background-image:url('../images/bg/background-car.jpg');*/
+    background-image:url('../images/bg/background-car.jpg');
   }
 
   .backgrounds .bg-img.bg-truck {
-    /*background-image:url('../images/bg/background-truck.jpg');  */
+    background-image:url('../images/bg/background-truck.jpg');  
   }
 
   .backgrounds .bg-img.bg-suv {
-    /*background-image:url('../images/bg/background-suv.jpg');*/
+    background-image:url('../images/bg/background-suv.jpg');
   }
 
 }
@@ -363,7 +358,6 @@ header .live-chat-btn:hover {
     top: -10%;
   }
 }
-
 /*******************************
 Hero Text
 *******************************/
