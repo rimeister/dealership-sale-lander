@@ -282,12 +282,6 @@ Modal
 Form
 *******************************/
 
-.rb-form {
-}
-
-.rb-form-container {
-}
-
 .rb-form .rb-form-row {
   display: flex;
   flex-direction: row;
@@ -382,6 +376,15 @@ Form
 /*  order: 2;*/
 }
 
+/* Loading, Success and Error states are shown in the Submit button */
+
+.rb-submit-btn:focus {
+
+}
+
+.rb-submit-btn.loading {
+
+}
 
 .rb-form button:hover {
   opacity:1;
