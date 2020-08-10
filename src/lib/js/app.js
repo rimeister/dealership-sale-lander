@@ -11,6 +11,10 @@ var APP = function(page) {
             }
         }
 
+        /* Ajax */
+        var myAjax = new RB.Ajax();
+
+        /* Anaylitics */
         var analytics = new RB.Analytics(analyticsConfig);
 
         analytics.init();
@@ -28,9 +32,18 @@ var APP = function(page) {
 
         // Add the "loaded" class to the background images
         // This helps to defer css image loading until after the page has loaded 
-        for (var i=0; i < backgroundImageDivs.length; i++) {
-            backgroundImageDivs[i].classList.add('loaded');                
-        }
+
+        isWebpSupported(function(webpIsSupported){
+
+            // WebP images can be smaller, and faster-loading, than PNGs. But, not all browsers support them.
+            // So, I check to see if I can use WebP images.
+            console.log('is webp supported? '+webpIsSupported);
+
+            for (var i=0; i < backgroundImageDivs.length; i++) {
+                backgroundImageDivs[i].classList.add(webpIsSupported?'loaded-webp':'loaded');                
+            }
+
+        });
 
         // Create an RB.Carousel instance
         var carsCarousel = new RB.Carousel({
@@ -93,11 +106,8 @@ var APP = function(page) {
         carsCarousel.autoSlide(4000);  
 
 
-        /* Ajax */
-        var myAjax = new RB.Ajax();
 
         var formWasSentSuccessfully = false;
-
 
         /* Modal */
         var testDriveModalEl = document.getElementById('test-drive-modal');
@@ -382,7 +392,7 @@ var APP = function(page) {
 
 
     // This function determines if WebP images can be used on this browser
-    function webpIsSupported(callback){
+    function isWebpSupported(callback){
         
         // If the browser doesn't support bitmap, return
         if(!window.createImageBitmap){
@@ -398,39 +408,21 @@ var APP = function(page) {
         myAjax.get(
             webpdata,
             function(response){
-                console.log(response);
+                // If createImageBitmap succeeds, then we can use WebP
+                createImageBitmap(response).then(function(){
+                    callback(true);
+                }, function(){
+                    callback(false);
+                });;
             },
             function(response){
-                console.log('error');
+                callback(false);
             },
             "blob"
         );
 
-        /*
-        // Retrieve the Image in Blob Format
-        fetch(webpdata).then(function(response){
-            return response.blob();
-        }).then(function(blob){
-            // If the createImageBitmap method succeeds, return true, otherwise false
-            createImageBitmap(blob).then(function(){
-                callback(true);
-            }, function(){
-                callback(false);
-            });
-        });
-        */
-
 
     }
-
-    console.log('WEB P');
-
-    // console.log(canUseWebP());
-
-    console.log(webpIsSupported(function(){
-        console.log('webp is supported');
-    }));
-
 
 }
 
