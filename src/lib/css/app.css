@@ -422,34 +422,39 @@ Hero Text
   text-transform: uppercase;
 }
 
-.offer-text-left {
+.offer-text-left, .offer-text-right {
+  box-sizing: border-box;
 }
 
-.offer-text-left, .offer-text-right {
-  width: 50%;
-  box-sizing: border-box;
+.offer-text-left {
+  width: 49%;
+  padding-left: 0;
+  text-align: center;
+}
+
+.offer-text-right {
+  width: 51%;
 }
 
 .hero-text h2 .above-percent-text {
   font-size: 0.6em;
   font-weight: 400;
   display: block;
-  padding-left: 45px;
 }
 
 .hero-text h2 .percent-off-text {
   color: #ea3546;  
-  float: left;
-  font-size: 2.6em;
+  font-size: 3.4rem;
   text-shadow:1px 1px 2px #333, 1px 1px 2px #000;
 }
 
 .hero-text h2 .msrp-text {
   max-width: 100px;
-  float: left;
+  clear: both;
+  display: block;
   font-size: 0.35em;
   line-height: 1.2em;
-  padding-left: 7px;
+  margin: auto;
   padding-top: 5px;
 }
 
@@ -468,6 +473,12 @@ Hero Text
   padding-left: 30px;
 }
 
+@media only screen and (min-width: 500px) {
+  .hero-text h2 .percent-off-text {
+    font-size: 3.6rem;
+  }
+}
+
 @media only screen and (min-width: 768px) {
   .hero-text h1 {
     font-size: 4em;
@@ -479,16 +490,24 @@ Hero Text
   }
 
   .hero-text h2 .percent-off-text {
+    float: left;
     font-size: 2.2em;
+    padding-left: 45px;
+  }
+
+  .hero-text h2 .msrp-text {
+    float: left;
+    max-width: none;
+    padding-left: 7px;
   }
 
   .offer-text-left {
-    width: 47%;
+    width: 40%;
     padding-left: 30px;
   }
 
   .offer-text-right {
-    width: 53%;
+    width: 60%;
   }
 
 }
@@ -517,6 +536,30 @@ Hero Text
   }
 
 }
+
+@media only screen and (min-width: 1200px) {
+
+  .offer-text-left {
+    text-align: left;
+  }
+
+  .hero-text h2 .above-percent-text {
+      padding-left: 45px;
+  }
+
+  .hero-text h2 .percent-off-text {
+    float: left;
+    font-size: 2.2em;
+    padding-left: 0;
+  }
+
+  .hero-text h2 .msrp-text {
+    max-width: 100px;
+    clear: none;
+  }
+
+}
+
 
 /*******************************
 Carousel Instance
@@ -654,10 +697,27 @@ Carousel Instance
 
 }
 
+@media only screen and (orientation:landscape) and (min-width: 1024px) {
+
+  #cars-carousel {
+    height: 100vh;
+  }
+
+  #cars-carousel .rb-carousel-inner {
+    top: 10%;    
+  }
+
+}
+
 @media only screen and (orientation:landscape) and (min-width: 1025px) {
 
   #cars-carousel {
+    height: auto;
     margin-top: 0%;
+  }
+
+  #cars-carousel .rb-carousel-inner {
+    top: 0%;    
   }
 
 }
@@ -731,7 +791,7 @@ Call To Action
 }
 
 
-@media only screen and (min-width: 1025px) {
+@media only screen and (min-width: 1024px) {
 
   .cta {
     bottom: 140px;
