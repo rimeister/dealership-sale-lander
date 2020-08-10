@@ -498,7 +498,7 @@ RB.Modal = function(options) {
         callbackOnCloseBtnClicked: null
     }
 
-    this.modalClosed = true;
+    this.modalOpen = false;
 
     for (var key in options) {
 
@@ -568,20 +568,7 @@ RB.Modal.prototype = {
 
         this.el.appendChild(modalWrapper);
 
-
         /* Event Listeners */
-        this.modalBg.addEventListener('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend',function(e){
-
-        	if (this.modalClosed) {
-        		this.el.classList.add('active');
-        		this.modalClosed = false;
-        	} else {
-        		this.el.classList.remove('active');
-        		this.modalClosed = true;
-        	}
-
-        }.bind(this));
-
 		this.modalBg.addEventListener('',function(){
 			this.close();
 		}.bind(this));
@@ -603,6 +590,20 @@ RB.Modal.prototype = {
 
         }.bind(this));
 
+        /* Since there's a click event listener on the document body, we need to stop clicks 
+        on the modal itself from propagating to the body 
+        -- otherwise, it would close when the modal content is clicked */
+        this.modalInner.addEventListener('click',function(event){
+            event.stopPropagation();
+        });
+
+        // Event handler for body clicked, added/removed on open/close
+        this.bodyClickHandler = function(event) {
+            if (this.modalOpen) {
+                this.close();                
+            }
+        }
+
     },
 
     close: function() {
@@ -610,6 +611,10 @@ RB.Modal.prototype = {
         this.el.classList.remove('active');
 
         this.modalInner.classList.remove('active');
+        this.modalOpen = false;
+
+        // Remove body click listener
+        document.body.removeEventListener('click',this.bodyClickHandler);
 
     	// If an onClose callback was passed in, call it
         if (this.callbackOnModalClose) {
@@ -623,7 +628,18 @@ RB.Modal.prototype = {
         this.el.classList.add('active');
 
         setTimeout(function(){
+
+            // Tell bodyClickHandler what 'this' is before adding event
+            // This allows us to remove it later without issue
+            this.bodyClickHandler = this.bodyClickHandler.bind(this);
+
+            // Add body click event
+            document.body.addEventListener('click',this.bodyClickHandler);
+
             this.modalInner.classList.add('active');
+
+            this.modalOpen = true;
+
         }.bind(this),100);
 
     	// If an onOpen callback was passed in, call it
