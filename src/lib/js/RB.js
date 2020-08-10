@@ -819,16 +819,30 @@ RB.Ajax.prototype = {
 
     constructor: RB.Ajax,
 
-    get: function(url,successCallback,errorCallback) {
+    get: function(url,successCallback,errorCallback,responseType) {
         var request = new XMLHttpRequest();  
 
+        if (typeof responseType !== 'undefined') {
+            request.responseType = responseType;
+        }
+
         request.onreadystatechange = function() { 
+
+
             if (request.readyState == 4 && request.status == 200) {
+
                 if (typeof successCallback !== 'undefined') {
+
+                    if (request.responseType == 'text') {
                     // Send response back as a serialized JSON string
-                    successCallback(JSON.stringify(request.responseText));
+                        successCallback(JSON.stringify(request.responseText));
+                    } else if (request.responseType == 'blob') {
+                        successCallback(request.response);
+                    }
+
                 }
-            }
+            } 
+
         }
 
         request.onerror = function(event) {

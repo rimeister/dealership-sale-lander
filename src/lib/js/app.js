@@ -380,26 +380,33 @@ var APP = function(page) {
 
     }
 
-    function canUseWebP() {
-        var elem = document.createElement('canvas');
 
-        if (!!(elem.getContext && elem.getContext('2d'))) {
-            return elem.toDataURL('image/webp').indexOf('data:image/webp') == 0;
-        }
-
-        return false;
-    }
-
-    function WebpIsSupported(callback){
-        // If the browser doesn't has the method createImageBitmap, you can't display webp format
+    // This function determines if WebP images can be used on this browser
+    function webpIsSupported(callback){
+        
+        // If the browser doesn't support bitmap, return
         if(!window.createImageBitmap){
             callback(false);
             return;
         }
 
-        // Base64 representation of a white point image
+        // A base64 image
         var webpdata = 'data:image/webp;base64,UklGRiQAAABXRUJQVlA4IBgAAAAwAQCdASoCAAEAAQAcJaQAA3AA/v3AgAA=';
 
+
+        // Use my RB.Ajax instance defined earlier
+        myAjax.get(
+            webpdata,
+            function(response){
+                console.log(response);
+            },
+            function(response){
+                console.log('error');
+            },
+            "blob"
+        );
+
+        /*
         // Retrieve the Image in Blob Format
         fetch(webpdata).then(function(response){
             return response.blob();
@@ -411,14 +418,20 @@ var APP = function(page) {
                 callback(false);
             });
         });
+        */
+
+
     }
 
     console.log('WEB P');
 
-    console.log(canUseWebP());
+    // console.log(canUseWebP());
 
-    console.log(WebpIsSupported());
-    
+    console.log(webpIsSupported(function(){
+        console.log('webp is supported');
+    }));
+
+
 }
 
 window.APP = APP;
