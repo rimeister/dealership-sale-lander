@@ -109,7 +109,7 @@ var APP = function(page) {
             }
         });
         carsCarousel.init();
-        // carsCarousel.autoSlide(4000);  
+        carsCarousel.autoSlide(4000);  
 
 
 
