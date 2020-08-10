@@ -687,34 +687,6 @@ RB.Form.prototype = {
             event.preventDefault();
         });
         
-        // Add required classes
-        for (var i=0; i < this.el.elements.length; i++) {
-
-            if (this.el.elements[i].type != 'submit') {
-                this.el.elements[i].classList.add('rb-form-input');
-            }
-
-            if (this.el.elements[i].type == 'submit') {
-                this.el.elements[i].classList.add('rb-btn','rb-submit-input');
-                submitInput = this.el.elements[i];
-            }
-
-        }
-
-        // If there's a cancel button, add click handler
-        var cancelBtn = this.el.getElementsByClassName('rb-form-cancel-btn')[0];
-
-        if (typeof cancelBtn !== 'undefined') {
-            cancelBtn.addEventListener('click',this.__cancelBtnHandler.bind(this));
-        }
-
-        // Find submit button and add handler
-        this.submitBtn = this.el.getElementsByClassName('rb-form-submit-btn')[0];
-
-        if (typeof this.submitBtn !== 'undefined') {
-            this.submitBtn.addEventListener('click',this.__submitBtnHandler.bind(this));
-        }
-
         // Config for Pristine validation
         pristineConfig = {
             // class of the parent element where the error/success class is added
@@ -734,6 +706,47 @@ RB.Form.prototype = {
 
         // Form validation
         this.pristine = new this.vendor.Pristine(this.el,pristineConfig,true);
+
+        // Add required classes
+        for (var i=0; i < this.el.elements.length; i++) {
+
+            if (this.el.elements[i].type != 'submit') {
+                this.el.elements[i].classList.add('rb-form-input');
+            }
+
+            if (this.el.elements[i].type == 'submit') {
+                this.el.elements[i].classList.add('rb-btn','rb-submit-input');
+            }
+
+            if (this.el.elements[i].type == 'tel') {
+
+                // If it's a phone number input, set up phone number validation
+                this.pristine.addValidator(this.el.elements[i], function(value) {
+
+                    var regex = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
+
+                    return regex.test(value);
+
+                }, "Invalid Phone Number", 2, false);
+
+            }
+
+        }
+
+        // If there's a cancel button, add click handler
+        var cancelBtn = this.el.getElementsByClassName('rb-form-cancel-btn')[0];
+
+        if (typeof cancelBtn !== 'undefined') {
+            cancelBtn.addEventListener('click',this.__cancelBtnHandler.bind(this));
+        }
+
+        // Find submit button and add handler
+        this.submitBtn = this.el.getElementsByClassName('rb-form-submit-btn')[0];
+
+        if (typeof this.submitBtn !== 'undefined') {
+            this.submitBtn.addEventListener('click',this.__submitBtnHandler.bind(this));
+        }
+
     },
     resetForm: function() {
         this.el.reset();
