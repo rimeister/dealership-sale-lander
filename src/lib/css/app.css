@@ -521,12 +521,19 @@ Carousel Instance
   margin: auto;
 }
 
-#cars-carousel .rb-carousel-inner .slide.loaded .vehicle-slide {
+#cars-carousel .rb-carousel-inner .slide.loaded .vehicle-slide, #cars-carousel .rb-carousel-inner .slide.loaded-webp .vehicle-slide {
   width: 100%;
-  background-image: url('../images/cars/cars-for-carousel-spritesheet-mobile.png');
   background-repeat: no-repeat;
   background-size: cover;
   padding: 52% 0 0 0;
+}
+
+#cars-carousel .rb-carousel-inner .slide.loaded .vehicle-slide {
+  background-image: url('../images/cars/cars-for-carousel-spritesheet-mobile.png');
+}
+
+#cars-carousel .rb-carousel-inner .slide.loaded-webp .vehicle-slide {
+  background-image: url('../images/cars/cars-for-carousel-spritesheet-mobile.webp');
 }
 
 #cars-carousel .rb-carousel-inner .vehicle-slide.suv-slide {
@@ -553,6 +560,11 @@ Carousel Instance
 
   #cars-carousel .rb-carousel-inner .slide.loaded .vehicle-slide {
   background-image: url('../images/cars/cars-for-carousel-spritesheet.png');
+  }
+
+
+  #cars-carousel .rb-carousel-inner .slide.loaded-webp .vehicle-slide {
+  background-image: url('../images/cars/cars-for-carousel-spritesheet.webp');
   }
 
   #cars-carousel.rb-carousel .rb-carousel-nav-btn-left {

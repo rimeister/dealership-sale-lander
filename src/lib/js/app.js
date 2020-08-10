@@ -33,17 +33,9 @@ var APP = function(page) {
         // Add the "loaded" class to the background images
         // This helps to defer css image loading until after the page has loaded 
 
-        isWebpSupported(function(webpIsSupported){
-
-            // WebP images can be smaller, and faster-loading, than PNGs. But, not all browsers support them.
-            // So, I check to see if I can use WebP images.
-            console.log('is webp supported? '+webpIsSupported);
-
-            for (var i=0; i < backgroundImageDivs.length; i++) {
-                backgroundImageDivs[i].classList.add(webpIsSupported?'loaded-webp':'loaded');                
-            }
-
-        });
+        for (var i=0; i < backgroundImageDivs.length; i++) {
+            backgroundImageDivs[i].classList.add('loaded');                
+        }
 
         // Create an RB.Carousel instance
         var carsCarousel = new RB.Carousel({
@@ -51,6 +43,20 @@ var APP = function(page) {
             loop: true,
             transitionTime: 400,
             nav: true,
+            initCallback: function() {
+
+                isWebpSupported(function(webpIsSupported){
+
+                    // WebP images can be smaller, and faster-loading, than PNGs. But, not all browsers support them.
+                    // So, I check to see if I can use WebP images.
+                    console.log('is webp supported? '+webpIsSupported);
+
+                    for (var i=0; i < this.slides.length; i++) {
+                        this.slides[i].classList.add(webpIsSupported?'loaded-webp':'loaded');                
+                    }
+
+                }.bind(this));
+            },
             callbackOnslideShown: function(slideIndex) {
 
 
@@ -103,7 +109,7 @@ var APP = function(page) {
             }
         });
         carsCarousel.init();
-        carsCarousel.autoSlide(4000);  
+        // carsCarousel.autoSlide(4000);  
 
 
 

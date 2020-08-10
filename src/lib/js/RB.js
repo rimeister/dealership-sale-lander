@@ -17,7 +17,8 @@ RB.Carousel = function(options) {
         nav: false,
         callbackOnslideShown: null,
         callbackOnNavBtnClick: null,
-        breakpointChangeCallback: null
+        breakpointChangeCallback: null,
+        initCallback: null
     }
 
     this.initialized = false;
@@ -89,7 +90,6 @@ RB.Carousel.prototype = {
 
             // Set the width of each slide
             for (var i = 0; i < this.slides.length; i++) {
-                this.slides[i].classList.add('loaded');
                 this.slides[i].style.width = (100 / this.slides.length) + '%';
             }
 
@@ -131,6 +131,10 @@ RB.Carousel.prototype = {
                 this.carouselInnerEl.style.left =  '-100%';
             } else {
                 this.carouselInnerEl.style.left =  '0%';                
+            }
+
+            if (this.initCallback){
+                this.initCallback();
             }
 
             this.initialized = true;

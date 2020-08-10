@@ -30,7 +30,7 @@ module.exports = function(grunt) {
       files: [
         '<%= appPaths.src %>/lib/css/*.css',
         '<%= appPaths.src %>/lib/js/*.js',
-        '<%= appPaths.src %>/lib/images/**/*.{png,jpg,jpeg}',
+        '<%= appPaths.src %>/lib/images/**/*.{png,jpg,jpeg,webp}',
         '<%= appPaths.src %>/lib/images/**/*.svg',
         '<%= appPaths.src %>/**/*.html'
       ],
@@ -79,7 +79,7 @@ module.exports = function(grunt) {
         files: [{
           expand: true,
           cwd: '<%= appPaths.src %>/lib/images/',
-          src: '**/*.{png,jpg,jpeg}',
+          src: '**/*.{png,jpg,jpeg,webp}',
           dest: '<%= appPaths.dist %>/lib/images'
         }]
       }
@@ -115,7 +115,7 @@ module.exports = function(grunt) {
 
         options: {
             baseDir: '<%= appPaths.dist %>',
-            assets: ['**/*.{png,jpg,jpeg,svg,css,js}'],
+            assets: ['**/*.{png,jpg,jpeg,svg,css,js,webp}'],
         },
         files: [{   
             expand: true,
@@ -134,6 +134,12 @@ module.exports = function(grunt) {
         src: '**/*.{html,svg,png,jpg,jpeg}',
         dest: '<%= appPaths.dist %>',
       },
+      copyWebp: {
+        expand: true,
+        cwd: '<%= appPaths.src %>',
+        src: '**/*.webp',
+        dest: '<%= appPaths.dist %>',
+      }  
     },
 
     concat: {
@@ -148,6 +154,9 @@ module.exports = function(grunt) {
     }
   });
 
-  grunt.registerTask('default', ['clean','cssmin','uglify','imagemin','svgmin','htmlmin','cacheBust']);
+
+  grunt.registerTask('default', ['clean','cssmin','uglify','imagemin','svgmin','htmlmin','cacheBust','copyWebp']);
+  grunt.registerTask('copyWebp',['copy:copyWebp']);
+  
 
 };
