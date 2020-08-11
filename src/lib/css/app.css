@@ -294,22 +294,8 @@ header .live-chat-btn:hover {
 
 }
 
-
-@media only screen and (orientation:landscape) {
-
-  .content {
-    height: auto;
-    width: 100%;
-  }
-
-}
-
 @media only screen and (orientation:landscape) and (min-width: 1025px) {
   
-  .content {
-    height: 100vh;
-  }
-
 }
 
 
@@ -418,7 +404,7 @@ Hero Text
 
 .hero-text h1 {
   font-size: 2em;
-  margin-bottom: 28px;
+  margin-bottom: 15px;  
   text-transform: uppercase;
   font-weight: 600;
   text-shadow: 0 2px 3px #000000;
@@ -585,14 +571,16 @@ Carousel Instance
 *******************************/
 
 #cars-carousel {
-  height: 100vh;
+
   box-sizing: border-box;
   margin: 0;
   /*padding-top: 85px;*/
   padding-top: 10%;
   position: absolute;
   top: 0;
+  bottom: 0;
   z-index: 0;
+
 }
 
 #cars-carousel .rb-carousel-inner {
@@ -642,6 +630,11 @@ Carousel Instance
 
 @media only screen and (min-width: 768px) {
 
+  #cars-carousel .rb-carousel-inner {
+    position: relative;
+      top: 36%;
+  }
+
   #cars-carousel .rb-carousel-inner .slide.loaded .vehicle-slide {
   background-image: url('../images/cars/cars-for-carousel-spritesheet.png');
   }
@@ -665,22 +658,29 @@ Carousel Instance
 
 }
 
-@media only screen and (orientation:landscape) {
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 736px) 
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: landscape) {
 
-  #cars-carousel {
-    height: auto;
-    width: 100%;
-    margin-top: -10%;
-    padding-top: 0;
-    position: relative;
+  #cars-carousel .rb-carousel-inner {
+    top: 0;
   }
 
 }
 
-@media only screen and (orientation:landscape)and (min-width: 769px) {
+
+@media only screen and (min-width: 768px) {
+    #cars-carousel {
+      margin-top: -10%;
+    }
+}
+
+@media only screen and (min-width: 769px) {
 
     #cars-carousel {
-      height: 100vh;
+    
     }
 
   #cars-carousel.rb-carousel .rb-carousel-nav-btn-left {
@@ -708,7 +708,7 @@ Carousel Instance
 @media only screen and (orientation:landscape) and (min-width: 1024px) {
 
   #cars-carousel {
-    height: 100vh;
+  
   }
 
 /*  #cars-carousel .rb-carousel-inner {
@@ -741,7 +741,7 @@ Carousel Instance
   }
 
   #cars-carousel .rb-carousel-inner {
-    top: 45%;  
+    top: 38%;  
   }
 
   #cars-carousel.rb-carousel .rb-carousel-nav-btn-left,  
