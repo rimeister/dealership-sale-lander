@@ -660,8 +660,9 @@ Carousel Instance
 
 @media only screen 
   and (min-device-width: 320px) 
-  and (max-device-width: 736px) 
-  and (-webkit-min-device-pixel-ratio: 2)
+  and (max-device-width: 823px) 
+
+  /*and (-webkit-min-device-pixel-ratio: 2)*/
   and (orientation: landscape) {
 
   #cars-carousel .rb-carousel-inner {
