@@ -405,6 +405,7 @@ Hero Text
 /*  position: absolute;
   top: 10%;*/
   padding: 1px 0 0 0;
+  position: absolute;
   text-align: center;
   z-index: 1;
 }
@@ -413,7 +414,6 @@ Hero Text
   max-width: 1200px;
   margin: auto;
   padding: 30px 30px 0 30px;
-  position: absolute;
 }
 
 .hero-text h1 {
@@ -711,26 +711,17 @@ Carousel Instance
     height: 100vh;
   }
 
-  #cars-carousel .rb-carousel-inner {
+/*  #cars-carousel .rb-carousel-inner {
     top: 10%;    
-  }
+  }*/
 
 }
 
 @media only screen and (orientation:landscape) and (min-width: 1025px) {
 
-  #cars-carousel {
-    height: auto;
-    margin-top: 0%;
-  }
-
-  #cars-carousel .rb-carousel-inner {
-    top: 0%;    
-  }
-
   #cars-carousel.rb-carousel .rb-carousel-nav-btn-left,  
   #cars-carousel.rb-carousel .rb-carousel-nav-btn-right {
-    top: 100px;  
+    /*top: 100px;  */
   }
 
   #cars-carousel.rb-carousel .rb-carousel-nav-btn-left {
@@ -746,8 +737,7 @@ Carousel Instance
 @media only screen and (min-width: 1200px) {
 
   #cars-carousel {
-/*    height: 100vh;
-    position: absolute;*/
+
   }
 
   #cars-carousel .rb-carousel-inner {
@@ -756,7 +746,7 @@ Carousel Instance
 
   #cars-carousel.rb-carousel .rb-carousel-nav-btn-left,  
   #cars-carousel.rb-carousel .rb-carousel-nav-btn-right {
-    top: 200px;  
+    /*top: 200px;  */
   }
 
 

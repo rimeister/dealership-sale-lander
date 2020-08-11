@@ -100,7 +100,7 @@ Carousel
       top: 78px;
   }
 
-  .rb-carousel .rb-carousel-nav-btn img {
+  .rb-carousel .rb-carousel-nav-btn,.rb-carousel .rb-carousel-nav-btn img {
     width: 55px;
   }
 
