@@ -215,6 +215,7 @@ header .live-chat-btn:hover {
   width: 100%;
   height: 100vh;
   box-sizing: border-box;
+  overflow: hidden;
   padding-top: 92px;
 }
 
@@ -675,7 +676,7 @@ Carousel Instance
 }
 
 @media only screen and (orientation:landscape)and (min-width: 769px) {
-  
+
     #cars-carousel {
       height: 100vh;
     }
