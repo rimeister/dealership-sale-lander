@@ -104,11 +104,16 @@ body {
   background-color: #fff;
 }
 
+.container {
+  position: relative;
+}
+
 .header-row {
+  height: 92px;
+  overflow: hidden;
   background-color: #272727;  
   position: absolute;
   width: 100%;
-  height: 85px;
   z-index: 2;
 }
 
@@ -206,7 +211,19 @@ header .live-chat-btn:hover {
   color: #fff;
 }
 
+.content {
+  width: 100%;
+  height: 100vh;
+  box-sizing: border-box;
+  padding-top: 92px;
+}
+
 @media only screen and (min-width: 768px) {
+
+  .header-row {
+    height: 107px;
+  }
+
   
   header .contact-list li {
     display: inline;    
@@ -225,6 +242,10 @@ header .live-chat-btn:hover {
 }
 
 @media only screen and (min-width: 992px) {
+
+  .header-row {
+    height: 85px;
+  }
 
   header {
     height: 85px;
@@ -262,11 +283,34 @@ header .live-chat-btn:hover {
 
 @media only screen and (min-width: 992px) {
 
+  .content {
+    padding-top: 85px;
+  }
+
   header .contact-list > li {
     display: block;
   }
 
 }
+
+
+@media only screen and (orientation:landscape) {
+
+  .content {
+    height: auto;
+    width: 100%;
+  }
+
+}
+
+@media only screen and (orientation:landscape) and (min-width: 1025px) {
+  
+  .content {
+    height: 100vh;
+  }
+
+}
+
 
 @media only screen and (min-width: 1200px) {
 
@@ -277,9 +321,9 @@ header .live-chat-btn:hover {
 }
 
 
-.container {
-  position: relative;
-}
+/*******************************
+Backgrounds
+*******************************/
 
 .backgrounds { 
   position: absolute;
@@ -289,8 +333,6 @@ header .live-chat-btn:hover {
   left: 0;
   z-index: -1;
 }
-
-
 
 .backgrounds .bg-img {
   position: absolute;
@@ -329,13 +371,6 @@ header .live-chat-btn:hover {
   opacity: 1;
 }
 
-.content {
-  width: 100%;
-  height: 100vh;
-  box-sizing: border-box;
-  padding-top: 85px;
-}
-
 
 @media only screen and (min-width: 768px) {
 
@@ -359,25 +394,6 @@ header .live-chat-btn:hover {
   }
 }
 
-@media only screen and (orientation:landscape) {
-
-  .content {
-    height: auto;
-    width: 100%;
-    padding-top: 0;
-    position: static;    
-  }
-
-}
-
-@media only screen and (orientation:landscape) and (min-width: 1025px) {
-  
-  .content {
-    height: 100vh;
-  }
-
-}
-
 
 /*******************************
 Hero Text
@@ -395,7 +411,7 @@ Hero Text
 .hero-text {
   max-width: 1200px;
   margin: auto;
-  padding: 15px 30px;
+  padding: 30px;
 }
 
 .hero-text h1 {
@@ -406,6 +422,7 @@ Hero Text
   text-shadow: 0 2px 3px #000000;
   border-bottom: 3px solid #f0b31e;
   display: inline-block;
+  margin-top: 0;
   padding-bottom: 15px;
 }
 
@@ -647,21 +664,15 @@ Carousel Instance
 
 @media only screen and (orientation:landscape) {
 
-  .heading {
-    position: static;
-  }
-
-  .header-row {
-    position: static;
-  }
-
   #cars-carousel {
     height: auto;
     width: 100%;
     margin-top: -10%;
     padding-top: 0;
-    position: static;
+    position: relative;
   }
+
+}
 
 @media only screen and (orientation:landscape)and (min-width: 769px) {
     #cars-carousel {
@@ -714,18 +725,37 @@ Carousel Instance
     top: 0%;    
   }
 
+  #cars-carousel.rb-carousel .rb-carousel-nav-btn-left,  
+  #cars-carousel.rb-carousel .rb-carousel-nav-btn-right {
+    top: 100px;  
+  }
+
+  #cars-carousel.rb-carousel .rb-carousel-nav-btn-left {
+    left: 130px;
+  } 
+
+  #cars-carousel.rb-carousel .rb-carousel-nav-btn-right {
+    right: 130px;
+  }
+
 }
 
 @media only screen and (min-width: 1200px) {
 
   #cars-carousel {
-    height: 100vh;
-    position: absolute;
+/*    height: 100vh;
+    position: absolute;*/
   }
 
   #cars-carousel .rb-carousel-inner {
     top: 45%;  
   }
+
+  #cars-carousel.rb-carousel .rb-carousel-nav-btn-left,  
+  #cars-carousel.rb-carousel .rb-carousel-nav-btn-right {
+    top: 200px;  
+  }
+
 
   #cars-carousel.rb-carousel .rb-carousel-nav-btn-left {
     left: 200px;
@@ -809,18 +839,19 @@ Call To Action
 @media only screen and (min-width: 1024px) {
 
   .cta {
-    bottom: 140px;
+    bottom: 40px;
   }
 
 }
 
-@media only screen and (min-width: 1367px) {
+/*@media only screen and (min-width: 1367px) {
 
   .cta {
-    bottom: 200px;
   }
 
 }
+
+*/
 
 
 /*******************************
