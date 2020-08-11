@@ -17,7 +17,8 @@ RB.Carousel = function(options) {
         nav: false,
         callbackOnslideShown: null,
         callbackOnNavBtnClick: null,
-        breakpointChangeCallback: null
+        breakpointChangeCallback: null,
+        initCallback: null
     }
 
     this.initialized = false;
@@ -130,6 +131,10 @@ RB.Carousel.prototype = {
                 this.carouselInnerEl.style.left =  '-100%';
             } else {
                 this.carouselInnerEl.style.left =  '0%';                
+            }
+
+            if (this.initCallback){
+                this.initCallback();
             }
 
             this.initialized = true;
@@ -470,9 +475,9 @@ RB.Carousel.prototype = {
             
         }
 
-        this.carouselInnerEl.addEventListener('touchstart', dragStart);
+        this.carouselInnerEl.addEventListener('touchstart', dragStart, {passive: true});
         this.carouselInnerEl.addEventListener('touchend', dragEnd);
-        this.carouselInnerEl.addEventListener('touchmove', dragAction);
+        this.carouselInnerEl.addEventListener('touchmove', dragAction, {passive: true});
         this.carouselInnerEl.addEventListener('mousedown', dragStart);
 
     }
@@ -493,7 +498,7 @@ RB.Modal = function(options) {
         callbackOnCloseBtnClicked: null
     }
 
-    this.modalClosed = true;
+    this.modalOpen = false;
 
     for (var key in options) {
 
@@ -563,20 +568,7 @@ RB.Modal.prototype = {
 
         this.el.appendChild(modalWrapper);
 
-
         /* Event Listeners */
-        this.modalBg.addEventListener('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend',function(e){
-
-        	if (this.modalClosed) {
-        		this.el.classList.add('active');
-        		this.modalClosed = false;
-        	} else {
-        		this.el.classList.remove('active');
-        		this.modalClosed = true;
-        	}
-
-        }.bind(this));
-
 		this.modalBg.addEventListener('',function(){
 			this.close();
 		}.bind(this));
@@ -598,6 +590,20 @@ RB.Modal.prototype = {
 
         }.bind(this));
 
+        /* Since there's a click event listener on the document body, we need to stop clicks 
+        on the modal itself from propagating to the body 
+        -- otherwise, it would close when the modal content is clicked */
+        this.modalInner.addEventListener('click',function(event){
+            event.stopPropagation();
+        });
+
+        // Event handler for body clicked, added/removed on open/close
+        this.bodyClickHandler = function(event) {
+            if (this.modalOpen) {
+                this.close();                
+            }
+        }
+
     },
 
     close: function() {
@@ -605,6 +611,10 @@ RB.Modal.prototype = {
         this.el.classList.remove('active');
 
         this.modalInner.classList.remove('active');
+        this.modalOpen = false;
+
+        // Remove body click listener
+        document.body.removeEventListener('click',this.bodyClickHandler);
 
     	// If an onClose callback was passed in, call it
         if (this.callbackOnModalClose) {
@@ -618,7 +628,18 @@ RB.Modal.prototype = {
         this.el.classList.add('active');
 
         setTimeout(function(){
+
+            // Tell bodyClickHandler what 'this' is before adding event
+            // This allows us to remove it later without issue
+            this.bodyClickHandler = this.bodyClickHandler.bind(this);
+
+            // Add body click event
+            document.body.addEventListener('click',this.bodyClickHandler);
+
             this.modalInner.classList.add('active');
+
+            this.modalOpen = true;
+
         }.bind(this),100);
 
     	// If an onOpen callback was passed in, call it
@@ -674,6 +695,7 @@ RB.Form.prototype = {
     constructor: RB.Form,
 
     init: function() {
+
         this.el.classList.add('rb-form');
 
         this.el.addEventListener('submit',function(event){
@@ -681,45 +703,6 @@ RB.Form.prototype = {
             event.preventDefault();
         });
         
-        var submitInput;
-
-        // Add required classes
-        for (var i=0; i < this.el.elements.length; i++) {
-
-            if (this.el.elements[i].type != 'submit') {
-                this.el.elements[i].classList.add('rb-form-input');
-            }
-
-            if (this.el.elements[i].type == 'submit') {
-                this.el.elements[i].classList.add('rb-btn','rb-submit-input');
-                submitInput = this.el.elements[i];
-            }
-
-        }
-
-        // If there was no submit input in the form (anchors were used for buttons), add one
-        if (typeof submitInput === 'undefined') {
-            submitInput = document.createElement('input');
-            submitInput.type = 'submit';
-            submitInput.value = 'Submit';
-            submitInput.classList.add('rb-form-submit-input');
-            this.el.appendChild(submitInput);
-        }
-
-        // If there's a cancel button, add click handler
-        var cancelBtn = this.el.getElementsByClassName('rb-form-cancel-btn')[0];
-
-        if (typeof cancelBtn !== 'undefined') {
-            cancelBtn.addEventListener('click',this.__cancelBtnHandler.bind(this));
-        }
-
-        // Find submit button and add handler
-        this.submitBtn = this.el.getElementsByClassName('rb-form-submit-btn')[0];
-
-        if (typeof this.submitBtn !== 'undefined') {
-            this.submitBtn.addEventListener('click',this.__submitBtnHandler.bind(this));
-        }
-
         // Config for Pristine validation
         pristineConfig = {
             // class of the parent element where the error/success class is added
@@ -739,8 +722,54 @@ RB.Form.prototype = {
 
         // Form validation
         this.pristine = new this.vendor.Pristine(this.el,pristineConfig,true);
-    },
 
+        // Add required classes
+        for (var i=0; i < this.el.elements.length; i++) {
+
+            if (this.el.elements[i].type != 'submit') {
+                this.el.elements[i].classList.add('rb-form-input');
+            }
+
+            if (this.el.elements[i].type == 'submit') {
+                this.el.elements[i].classList.add('rb-btn','rb-submit-input');
+            }
+
+            if (this.el.elements[i].type == 'tel') {
+
+                // If it's a phone number input, set up phone number validation
+                this.pristine.addValidator(this.el.elements[i], function(value) {
+
+                    var regex = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
+
+                    return regex.test(value);
+
+                }, "Invalid Phone Number", 2, false);
+
+            }
+
+        }
+
+        // If there's a cancel button, add click handler
+        var cancelBtn = this.el.getElementsByClassName('rb-form-cancel-btn')[0];
+
+        if (typeof cancelBtn !== 'undefined') {
+            cancelBtn.addEventListener('click',this.__cancelBtnHandler.bind(this));
+        }
+
+        // Find submit button and add handler
+        this.submitBtn = this.el.getElementsByClassName('rb-form-submit-btn')[0];
+
+        if (typeof this.submitBtn !== 'undefined') {
+            this.submitBtn.addEventListener('click',this.__submitBtnHandler.bind(this));
+        }
+
+    },
+    resetForm: function() {
+        this.el.reset();
+        this.pristine.reset();
+        this.submitBtn.innerHTML = "Submit";
+        this.submitBtn.classList.remove('error','success');
+    },
     __validateForm: function() {
         return this.pristine.validate();
     },
@@ -778,7 +807,7 @@ RB.Form.prototype = {
                     var dataString = JSON.stringify(data);
 
                     // Pass in the functions that show the success or error message
-                    this.onFormSubmit(dataString,this.__showSuccessMessage,this.__showErrorMessage);
+                    this.onFormSubmit(dataString,this.__showSuccessMessage.bind(this),this.__showErrorMessage.bind(this));
                 }
 
             }
@@ -788,12 +817,12 @@ RB.Form.prototype = {
     },
 
     __showSuccessMessage: function() {
-        this.submitBtn.classList.addClass('success');
+        this.submitBtn.classList.add('success');
         this.submitBtn.innerHTML = "Sent! We'll contact you soon.";               
     },
     
     __showErrorMessage: function() {
-        this.submitBtn.classList.addClass('failure');
+        this.submitBtn.classList.add('failure');
         this.submitBtn.innerHTML = "Error. Please try again.";  
     },
     __cancelBtnHandler: function(event) {
@@ -823,16 +852,30 @@ RB.Ajax.prototype = {
 
     constructor: RB.Ajax,
 
-    get: function(url,successCallback,errorCallback) {
+    get: function(url,successCallback,errorCallback,responseType) {
         var request = new XMLHttpRequest();  
 
+        if (typeof responseType !== 'undefined') {
+            request.responseType = responseType;
+        }
+
         request.onreadystatechange = function() { 
+
+
             if (request.readyState == 4 && request.status == 200) {
+
                 if (typeof successCallback !== 'undefined') {
+
+                    if (request.responseType == 'text') {
                     // Send response back as a serialized JSON string
-                    successCallback(JSON.stringify(request.responseText));
+                        successCallback(JSON.stringify(request.responseText));
+                    } else if (request.responseType == 'blob') {
+                        successCallback(request.response);
+                    }
+
                 }
-            }
+            } 
+
         }
 
         request.onerror = function(event) {
@@ -937,6 +980,7 @@ RB.Analytics.prototype = {
         if (this.googleAnalytics) {
 
             // Add the GA library to the page
+            
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
             (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
             m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)

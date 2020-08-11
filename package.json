@@ -1,0 +1,39 @@
+{
+  "name": "dealership-sale-lander",
+  "version": "1.0.0",
+  "description": "",
+  "author": "",
+  "private": true,
+  "main": "Gruntfile.js",
+  "module": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@bitbucket.org/rimeister/carousel-js.git"
+  },
+  "keywords": [],
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/rimeister/carousel-js#readme",
+  "dependencies": {
+    "esm": "^3.2.25"
+  },
+  "devDependencies": {
+    "grunt": "^1.2.1",
+    "grunt-cache-bust": "^1.7.0",
+    "grunt-contrib-clean": "^2.0.0",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-cssmin": "^3.0.0",
+    "grunt-contrib-htmlmin": "^3.1.0",
+    "grunt-contrib-imagemin": "^4.0.0",
+    "grunt-contrib-jshint": "^2.1.0",
+    "grunt-contrib-qunit": "^4.0.0",
+    "grunt-contrib-uglify": "^5.0.0",
+    "grunt-contrib-watch": "^1.1.0",
+    "grunt-cwebp": "^3.0.1",
+    "grunt-svgmin": "^6.0.1",
+    "matchdep": "^2.0.0"
+  }
+}

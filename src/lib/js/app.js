@@ -1,6 +1,4 @@
-var APP = APP || {};
-
-APP.init = function(page) {
+var APP = function(page) {
 
     if (page == 'home') {
 
@@ -13,6 +11,10 @@ APP.init = function(page) {
             }
         }
 
+        /* Ajax */
+        var myAjax = new RB.Ajax();
+
+        /* Anaylitics */
         var analytics = new RB.Analytics(analyticsConfig);
 
         analytics.init();
@@ -25,16 +27,35 @@ APP.init = function(page) {
         // A slide can be shown multiple times, but I only want to track it once.
         var slidesShown = [];
 
+        // Get background images
+        var backgroundImageDivs = document.getElementsByClassName('backgrounds')[0].getElementsByClassName('bg-img');
+
+        // Add the "loaded" class to the background images
+        // This helps to defer css image loading until after the page has loaded 
+        for (var i=0; i < backgroundImageDivs.length; i++) {
+            backgroundImageDivs[i].classList.add('loaded');                
+        }
+
         // Create an RB.Carousel instance
         var carsCarousel = new RB.Carousel({
             el: carsCarouselEl,
             loop: true,
             transitionTime: 400,
             nav: true,
+            initCallback: function() {
+
+                isWebpSupported(function(webpIsSupported){
+
+                    // WebP images can be smaller, and faster-loading, than PNGs. But, not all browsers support them.
+                    // So, I check to see if I can use WebP images.
+                    for (var i=0; i < this.slides.length; i++) {
+                        this.slides[i].classList.add(webpIsSupported?'loaded-webp':'loaded');                
+                    }
+
+                }.bind(this));
+            },
             callbackOnslideShown: function(slideIndex) {
 
-                // Get background images
-                var backgroundImageDivs = document.getElementsByClassName('backgrounds')[0].getElementsByClassName('bg-img');
 
                 // Adding setTimeout in order to delay the background change by 0.125 seconds
                 setTimeout(function(){
@@ -85,7 +106,11 @@ APP.init = function(page) {
             }
         });
         carsCarousel.init();
-        // carsCarousel.autoSlide(5000);  
+        carsCarousel.autoSlide(4000);  
+
+
+
+        var formWasSentSuccessfully = false;
 
         /* Modal */
         var testDriveModalEl = document.getElementById('test-drive-modal');
@@ -125,6 +150,13 @@ APP.init = function(page) {
                         console.log('EVENT TRACKING: '+platform+'. Modal has closed\n\n\n');
                     }
                 });
+
+                // If the form has been submitted, reset the form after the modal closes
+                if (formWasSentSuccessfully) {
+                    testDriveForm.resetForm();
+                    formWasSentSuccessfully = false;
+                }
+
             },
             callbackOnCloseBtnClicked: function() {
 
@@ -144,10 +176,6 @@ APP.init = function(page) {
 
         // Initialize the modal
         testDriveModal.init();
-
-
-        /* Ajax */
-        var myAjax = new RB.Ajax();
 
 
         /* Form */
@@ -188,6 +216,8 @@ APP.init = function(page) {
                                 console.log('EVENT TRACKING: '+platform+'. Form has been submitted successfully\n\n\n');
                             }
                         });
+
+                        formWasSentSuccessfully = true;
 
                     },
                     // Error callback
@@ -360,6 +390,40 @@ APP.init = function(page) {
         }
 
         return false;
+
+    }
+
+
+    // This function determines if WebP images can be used on this browser
+    function isWebpSupported(callback){
+        
+        // If the browser doesn't support bitmap, return
+        if(!window.createImageBitmap){
+            callback(false);
+            return;
+        }
+
+        // A base64 image
+        var webpdata = 'data:image/webp;base64,UklGRiQAAABXRUJQVlA4IBgAAAAwAQCdASoCAAEAAQAcJaQAA3AA/v3AgAA=';
+
+
+        // Use my RB.Ajax instance defined earlier
+        myAjax.get(
+            webpdata,
+            function(response){
+                // If createImageBitmap succeeds, then we can use WebP
+                createImageBitmap(response).then(function(){
+                    callback(true);
+                }, function(){
+                    callback(false);
+                });;
+            },
+            function(response){
+                callback(false);
+            },
+            "blob"
+        );
+
 
     }
 
