@@ -661,12 +661,16 @@ Carousel Instance
 @media only screen 
   and (min-device-width: 320px) 
   and (max-device-width: 823px) 
-
-  /*and (-webkit-min-device-pixel-ratio: 2)*/
   and (orientation: landscape) {
 
   #cars-carousel .rb-carousel-inner {
     top: 0;
+  }
+
+  #cars-carousel .rb-carousel-nav {
+
+    display: none;
+
   }
 
 }
@@ -837,15 +841,6 @@ Call To Action
   }
 
 }
-
-/*@media only screen and (min-width: 1367px) {
-
-  .cta {
-  }
-
-}
-
-*/
 
 
 /*******************************
