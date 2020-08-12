@@ -25,3 +25,19 @@ When this form is submitted, an email with the user's information would be sent 
 * The CSS is mobile first. Mobile styles and overridden with tablet/desktop styles in so that mobile only gets the CSS it needs to render the page. JPEGs and PNGs are loaded in CSS. Smaller images are provided to Mobile using media queries.
 * Made a Grunt build process that minifies + concatenates CSS and JS, compresses images, and does Cache-busting. 
 * The page uses a spritesheet for the car images, in order to reduce the number of HTTP requests to the server, and speed up page loading. I have also used WebP images for browsers that support that image format (otherwise, it uses PNG).
+
+## Available Scripts ##
+
+This project uses the task-runner Grunt to build to the `dist` folder.
+
+### Watch ###
+
+To compile the files as you're working, run
+
+`grunt watch`
+
+### Production Build ###
+
+To create a production build to the `dist` for deployment, simply run the default task:
+
+`grunt`
