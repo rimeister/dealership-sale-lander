@@ -1,5 +1,8 @@
 # Dealership Sale Lander #
 
+## Project URL ##
+[http://qa.rileyboyd.com/dealership/](http://qa.rileyboyd.com/dealership/)
+
 ## Overview ##
 
 I designed and developed this example from scratch in order to demonstrate how I might approach creating a landing page for a digital ad campaign for a client. For this one, I thought of a strategy to help a hypothetical customer reach their goals, designed the layout, isolated the backgrounds and the vehicles in photoshop, and wrote my own javascript library (RB.js) for all the functionality.  My library has classes for a mobile/desktop-friendly Carousel component, a Modal component, a Form component (with validation and flexibility for submitting via AJAX), AJAX handlers, and Analytics handlers. This library is reusable and can be added to any project in the future.
