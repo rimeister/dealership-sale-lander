@@ -42,6 +42,7 @@ var APP = function(page) {
             loop: true,
             transitionTime: 400,
             nav: true,
+            hideNavOnMouseOut: true,
             initCallback: function() {
 
                 isWebpSupported(function(webpIsSupported){

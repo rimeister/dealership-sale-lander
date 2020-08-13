@@ -620,10 +620,6 @@ Carousel Instance
   background-position: center bottom;
 }
 
-#cars-carousel.rb-carousel .rb-carousel-nav-btn-left img, #cars-carousel.rb-carousel .rb-carousel-nav-btn-right img{
-  opacity: 0.8;
-}
-
 #cars-carousel.rb-carousel .slide-caption {
   display: none;
 }
@@ -632,22 +628,16 @@ Carousel Instance
 
   #cars-carousel .rb-carousel-inner {
     position: relative;
-      top: 36%;
+    top: 36%;
   }
 
   #cars-carousel .rb-carousel-inner .slide.loaded .vehicle-slide {
-  background-image: url('../images/cars/cars-for-carousel-spritesheet.png');
+    background-image: url('../images/cars/cars-for-carousel-spritesheet.png');
   }
 
 
   #cars-carousel .rb-carousel-inner .slide.loaded-webp .vehicle-slide {
-  background-image: url('../images/cars/cars-for-carousel-spritesheet.webp');
-  }
-
-  #cars-carousel.rb-carousel .rb-carousel-nav-btn-left,  
-  #cars-carousel.rb-carousel .rb-carousel-nav-btn-right {
-    display: block !important;
-    opacity: 0.8;
+    background-image: url('../images/cars/cars-for-carousel-spritesheet.webp');
   }
 
   #cars-carousel.rb-carousel .rb-carousel-nav-btn-left {
@@ -688,22 +678,6 @@ Carousel Instance
     }
 }
 
-@media only screen and (min-width: 769px) {
-
-    #cars-carousel {
-    
-    }
-
-  #cars-carousel.rb-carousel .rb-carousel-nav-btn-left {
-    /*left: 200px;*/
-  } 
-
-  #cars-carousel.rb-carousel .rb-carousel-nav-btn-right {
-    /*right: 200px;*/
-  }
-
-}
-
 @media only screen and (min-width: 992px) {
 
   #cars-carousel.rb-carousel .rb-carousel-nav-btn-left,  
@@ -714,18 +688,6 @@ Carousel Instance
   #cars-carousel .rb-carousel-inner {
     top: 35%;  
   }
-}
-
-@media only screen and (orientation:landscape) and (min-width: 1024px) {
-
-  #cars-carousel {
-  
-  }
-
-/*  #cars-carousel .rb-carousel-inner {
-    top: 10%;    
-  }*/
-
 }
 
 @media only screen and (orientation:landscape) and (min-width: 1025px) {
@@ -747,10 +709,6 @@ Carousel Instance
 
 @media only screen and (min-width: 1200px) {
 
-  #cars-carousel {
-
-  }
-
   #cars-carousel .rb-carousel-inner {
     top: 38%;  
   }
@@ -767,19 +725,9 @@ Carousel Instance
 
 @media only screen and (min-width: 1400px) {
 
-  #cars-carousel {
-
-  }
-
   #cars-carousel .rb-carousel-inner {
     top: 38%;  
   }
-
-  #cars-carousel.rb-carousel .rb-carousel-nav-btn-left,  
-  #cars-carousel.rb-carousel .rb-carousel-nav-btn-right {
-    /*top: 200px;  */
-  }
-
 
   #cars-carousel.rb-carousel .rb-carousel-nav-btn-left {
     left: 22.5%;

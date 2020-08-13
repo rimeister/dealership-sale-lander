@@ -18,7 +18,8 @@ RB.Carousel = function(options) {
         callbackOnslideShown: null,
         callbackOnNavBtnClick: null,
         breakpointChangeCallback: null,
-        initCallback: null
+        initCallback: null,
+        hideNavOnMouseOut: false
     }
 
     this.initialized = false;
@@ -27,6 +28,7 @@ RB.Carousel = function(options) {
     this.slides = null;
     this.carouselInnerEl = null;
     this.slideDuration = null;
+    this.navIsVisible = true;
 
     // Auto play properties
     this.autoPlay = false;
@@ -111,6 +113,12 @@ RB.Carousel.prototype = {
 
             if (this.callbackOnslideShown && typeof this.callbackOnslideShown === 'function') {
                 this.callbackOnslideShown(this.currentSlideIndex);
+            }
+
+            if (this.hideNavOnMouseOut) {
+                this.navIsVisible = false;
+                this.el.classList.add('hide-nav');
+                this.el.classList.add('opacity-zero');
             }
 
             /* To check which breakpoint the window is at, I let CSS do the heavy lifting
@@ -309,33 +317,36 @@ RB.Carousel.prototype = {
     },
 
     __showNavigation: function() {
-        // var carouselNav = this.el.getElementsByClassName('rb-carousel-nav')[0];
 
-        var carouselNavBtns = this.el.getElementsByClassName('rb-carousel-nav-btn');
+        if (!this.navIsVisible) {
 
-        for (var i = 0; i < carouselNavBtns.length; i++) {
-            carouselNavBtns[i].style.display = 'block';
+            var carouselNavBtns = this.el.getElementsByClassName('rb-carousel-nav-btn');
+
+            this.el.classList.remove('hide-nav');
+
+            setTimeout(function() {
+                this.el.classList.remove('opacity-zero');
+                this.navIsVisible = true;  
+            }.bind(this), 0);
+
         }
-
-        setTimeout(function() {
-            this.el.classList.add('nav-active');
-        }.bind(this), 100);
-
+        
     },
 
     __hideNavigation: function() {
 
-        var carouselNavBtns = this.el.getElementsByClassName('rb-carousel-nav-btn');
+        if (this.navIsVisible) {
 
-        this.el.classList.remove('nav-active');
+            var carouselNavBtns = this.el.getElementsByClassName('rb-carousel-nav-btn');
 
-        setTimeout(function() {
+            this.el.classList.add('opacity-zero');
+            this.el.addEventListener('transitionend', function(){
 
-            for (var i = 0; i < carouselNavBtns.length; i++) {
-                carouselNavBtns[i].style.display = 'none';
-            }
-
-        }, 0);
+                    this.el.classList.add('hide-nav');      
+                    this.navIsVisible = false;               
+                
+            }.bind(this));
+        }
 
     },
 
@@ -344,7 +355,9 @@ RB.Carousel.prototype = {
 
         function mouseEnterHandler() {
 
-            this.__showNavigation();
+            if (this.hideNavOnMouseOut) {
+                this.__showNavigation();
+            }
 
             if (this.isAutoPlaying && this.autoPlay) {
                 this.stopAutoSlide();
@@ -354,7 +367,9 @@ RB.Carousel.prototype = {
 
         function mouseExitHandler() {
 
-            this.__hideNavigation();
+            if (this.hideNavOnMouseOut) {
+                this.__hideNavigation();
+            }
 
             if (!this.isAutoPlaying && this.autoPlay) {
 

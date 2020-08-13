@@ -64,19 +64,25 @@ Carousel
 /* Carousel Navigation */
 .rb-carousel .rb-carousel-nav-btn {
   top: 66%;
-  transition: opacity 0.5s ease;
-
   height: 30px;
   width: 30px;
   cursor: pointer;
   display: inline-block;
+  opacity: 1;
+  transition: opacity 0.5s ease;
   position: absolute;
   z-index: 2;
 
 }
-.rb-carousel.nav-active .rb-carousel-nav-btn {
-  opacity: 1;
+
+.rb-carousel.hide-nav .rb-carousel-nav-btn {
+  display: none;
 }
+
+.rb-carousel.opacity-zero .rb-carousel-nav-btn {
+  opacity: 0;
+}
+
 
 .rb-carousel .rb-carousel-nav-btn-left {
   left: 15px;
@@ -87,16 +93,12 @@ Carousel
 }
 
 @media only screen and (max-width: 768px) {
-  .rb-carousel.nav-active .rb-carousel-nav-btn {
-    display: inline-block !important;    
-  }
+
 }
 
 @media only screen and (min-width: 992px) {
 
   .rb-carousel .rb-carousel-nav-btn {
-      display: none;
-      opacity: 0;
       top: 78px;
   }
 
