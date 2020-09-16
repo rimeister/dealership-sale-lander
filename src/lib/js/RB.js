@@ -181,7 +181,7 @@ RB.Carousel.prototype = {
 
         if (this.currentSlideIndex == this.slides.length-2) {
             this.carouselInnerEl.style.left = -slideWidth + "px";
-            this.currentSlideIndex = this.slides.length = 0;
+            this.currentSlideIndex = 0;
         }
 
         if (this.callbackOnslideShown && typeof this.callbackOnslideShown === 'function') {
