@@ -9,6 +9,9 @@ Carousel
     position: relative;
 }
 
+.rb-carousel .rb-carousel-inner {
+  position: relative;
+}
 
 .rb-carousel .rb-carousel-inner.sliding {
     transition: left 0.5s ease;
@@ -38,27 +41,6 @@ Carousel
     font-weight: 600;
     line-height: 1em;
     text-align: center;
-}
-
-.rb-carousel .slide div.btn-wrapper {
-    width: 100%;
-    margin-bottom: 13px;
-    position: absolute;
-    bottom: 0;
-    text-align: center;
-}
-
-.rb-carousel .slide div.btn-wrapper .btn {
-    background-color: #02a3ec;
-    border: 1px solid #0a93d4;
-    border-radius: 3px;
-    box-shadow: 0px 0px 5px rgba(0,0,0,0.5);
-    display: inline-block;
-    margin: 0;
-}
-
-.rb-carousel .slide div.btn-wrapper .btn:hover {
-    color: #fff;
 }
 
 /* Carousel Navigation */
@@ -435,10 +417,6 @@ Form
     transform: rotate(360deg);
   }
 }
-
-
-
-
 
 
 .rb-form button:hover {
