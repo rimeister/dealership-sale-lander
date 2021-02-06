@@ -600,11 +600,6 @@ Carousel Instance
   padding: 52% 0 0 0;
 }
 
-  #cars-carousel.rb-carousel .rb-carousel-nav-btn-left,
-  #cars-carousel.rb-carousel .rb-carousel-nav-btn-right  {
-    opacity: 0.8;
-  }
-
 #cars-carousel .rb-carousel-inner .slide.loaded .vehicle-slide {
   background-image: url('../images/cars/cars-for-carousel-spritesheet-mobile.png');
 }
