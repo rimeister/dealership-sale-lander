@@ -19,7 +19,8 @@ RB.Carousel = function(options) {
         callbackOnNavBtnClick: null,
         breakpointChangeCallback: null,
         initCallback: null,
-        hideNavOnMouseOut: false
+        hideNavOnMouseOut: false,
+        disableClickThreshold: 10
     }
 
     this.initialized = false;
@@ -88,7 +89,7 @@ RB.Carousel.prototype = {
             this.numSlides = this.slides.length;
 
             this.carouselInnerEl.style.width = (100 * this.slides.length) + '%';
-            this.carouselInnerEl.style.left = 0;
+            this.carouselInnerEl.style.transform = "translateX(0)";
 
             // Set the width of each slide
             for (var i = 0; i < this.slides.length; i++) {
@@ -136,9 +137,9 @@ RB.Carousel.prototype = {
             var carouselWidth = (this.el.getBoundingClientRect().width - parseInt(getComputedStyle(this.el, null).getPropertyValue('border-left-width')) - parseInt(getComputedStyle(this.el, null).getPropertyValue('border-right-width')));
 
             if (this.loop) {
-                this.carouselInnerEl.style.left =  '-100%';
+                this.carouselInnerEl.style.transform = "translateX(-100%)";
             } else {
-                this.carouselInnerEl.style.left =  '0%';                
+                this.carouselInnerEl.style.transform = "translateX(0)";              
             }
 
             if (this.initCallback){
@@ -165,7 +166,9 @@ RB.Carousel.prototype = {
             // Note: starting index (0) need to be at 100%, hence the -100 at the end
             var newLeftPosition = (index * 100 * -1) - 100;
 
-            this.carouselInnerEl.style.left = newLeftPosition + '%';
+            this.carouselInnerEl.style.transform = "translateX(" +  newLeftPosition + "%)";
+
+            console.log("translateX(" +  newLeftPosition + "%)");
 
             this.currentSlideIndex = index;    
 
@@ -183,13 +186,13 @@ RB.Carousel.prototype = {
         this.carouselInnerEl.classList.remove('sliding');
 
         if (this.currentSlideIndex == -1) {
-          this.carouselInnerEl.style.left = -((this.slides.length-2) * slideWidth) + "px";
+          this.carouselInnerEl.style.transform = "translateX(" + -((this.slides.length-2) * slideWidth) + "px)";
           this.currentSlideIndex = this.slides.length - 3;
         }
 
         if (this.currentSlideIndex == this.slides.length-2) {
-            this.carouselInnerEl.style.left = -slideWidth + "px";
-            this.currentSlideIndex = this.slides.length = 0;
+            this.carouselInnerEl.style.transform = "translateX(" + -slideWidth + "px)";
+            this.currentSlideIndex = 0;
         }
 
         if (this.callbackOnslideShown && typeof this.callbackOnslideShown === 'function') {
@@ -440,9 +443,16 @@ RB.Carousel.prototype = {
         var xPosition1 = 0,
           xPosition2 = 0,
           posFinal,
-          threshold = 100;
+          threshold = 100,
+          dragStartXPos = 0,
+          dragEndXPos = 0;
 
         var _this = this;
+
+        function preventClick(event) {
+            event.preventDefault();
+            event.stopPropagation();
+        }
 
         function dragStart(event) {
             event = event || window.event;
@@ -452,8 +462,10 @@ RB.Carousel.prototype = {
 
             if (event.type == 'touchstart') {
               xPosition1 = event.touches[0].clientX;
+              dragStartXPos = event.touches[0].clientX;
             } else {
               xPosition1 = event.clientX;
+              dragStartXPos = event.clientX;
               document.onmouseup = dragEnd;
               document.onmousemove = dragAction;
             }
@@ -470,11 +482,12 @@ RB.Carousel.prototype = {
               xPosition2 = xPosition1 - event.clientX;
               xPosition1 = event.clientX;
             }
-            _this.carouselInnerEl.style.left = (_this.carouselInnerEl.offsetLeft - xPosition2) + "px";
+            _this.carouselInnerEl.style.transform = "translateX(" + (_this.carouselInnerEl.offsetLeft - xPosition2) + "px)";
             
         }
 
         function dragEnd(event) {
+
             _this.resetAutoSlide();
             posFinal = _this.carouselInnerEl.offsetLeft;
             if (posFinal - _this.positionInitial < -threshold) {
@@ -482,8 +495,29 @@ RB.Carousel.prototype = {
             } else if (posFinal - _this.positionInitial > threshold) {
               _this.previousSlide();
             } else {
-              _this.carouselInnerEl.style.left = (_this.positionInitial) + "px";
+              _this.carouselInnerEl.style.transform = "translateX(" + (_this.positionInitial) + "px)";
             }
+
+            if (event.type == 'touchstart') {
+              dragEndXPos = event.touches[0].clientX;
+            } else {
+              dragEndXPos = event.clientX;
+            }
+
+            // If the amount that the slide was dragged is greater than the 'click' threshold that was set
+            if ( Math.abs(dragEndXPos - dragStartXPos) > _this.disableClickThreshold ) {
+
+                // Add the click event to prevent the click propagation
+                _this.carouselInnerEl.addEventListener('click',preventClick,true);
+
+            } else {
+                // Remove the click event to prevent the click propagation
+                // This will allow the user to click through to the link
+                _this.carouselInnerEl.removeEventListener('click',preventClick,true);
+            }
+
+            dragStartXPos = 0;
+            dragEndXPos = 0;
 
             document.onmouseup = null;
             document.onmousemove = null;
