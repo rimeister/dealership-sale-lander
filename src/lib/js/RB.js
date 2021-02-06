@@ -87,7 +87,7 @@ RB.Carousel.prototype = {
             this.numSlides = this.slides.length;
 
             this.carouselInnerEl.style.width = (100 * this.slides.length) + '%';
-            this.carouselInnerEl.style.left = 0;
+            this.carouselInnerEl.style.transform = "translate-x(0)";
 
             // Set the width of each slide
             for (var i = 0; i < this.slides.length; i++) {
@@ -129,9 +129,9 @@ RB.Carousel.prototype = {
             var carouselWidth = (this.el.getBoundingClientRect().width - parseInt(getComputedStyle(this.el, null).getPropertyValue('border-left-width')) - parseInt(getComputedStyle(this.el, null).getPropertyValue('border-right-width')));
 
             if (this.loop) {
-                this.carouselInnerEl.style.left =  '-100%';
+                this.carouselInnerEl.style.transform = "translate-x(-100%)";
             } else {
-                this.carouselInnerEl.style.left =  '0%';                
+                this.carouselInnerEl.style.transform = "translate-x(0)";              
             }
 
             if (this.initCallback){
@@ -158,7 +158,7 @@ RB.Carousel.prototype = {
             // Note: starting index (0) need to be at 100%, hence the -100 at the end
             var newLeftPosition = (index * 100 * -1) - 100;
 
-            this.carouselInnerEl.style.left = newLeftPosition + '%';
+            this.carouselInnerEl.style.transform = "translate-x(-100%)"; //newLeftPosition + '%';
 
             this.currentSlideIndex = index;    
 
@@ -176,12 +176,12 @@ RB.Carousel.prototype = {
         this.carouselInnerEl.classList.remove('sliding');
 
         if (this.currentSlideIndex == -1) {
-          this.carouselInnerEl.style.left = -((this.slides.length-2) * slideWidth) + "px";
+          this.carouselInnerEl.style.transform = -((this.slides.length-2) * slideWidth) + "px";
           this.currentSlideIndex = this.slides.length - 3;
         }
 
         if (this.currentSlideIndex == this.slides.length-2) {
-            this.carouselInnerEl.style.left = -slideWidth + "px";
+            this.carouselInnerEl.style.transform = -slideWidth + "px";
             this.currentSlideIndex = 0;
         }
 
@@ -465,7 +465,7 @@ RB.Carousel.prototype = {
               xPosition2 = xPosition1 - event.clientX;
               xPosition1 = event.clientX;
             }
-            _this.carouselInnerEl.style.left = (_this.carouselInnerEl.offsetLeft - xPosition2) + "px";
+            _this.carouselInnerEl.style.transform = (_this.carouselInnerEl.offsetLeft - xPosition2) + "px";
             
         }
 
@@ -478,7 +478,7 @@ RB.Carousel.prototype = {
             } else if (posFinal - _this.positionInitial > threshold) {
               _this.previousSlide();
             } else {
-              _this.carouselInnerEl.style.left = (_this.positionInitial) + "px";
+              _this.carouselInnerEl.style.transform = (_this.positionInitial) + "px";
             }
 
             if (event.type == 'touchstart') {

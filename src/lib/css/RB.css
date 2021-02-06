@@ -14,7 +14,7 @@ Carousel
 }
 
 .rb-carousel .rb-carousel-inner.sliding {
-    transition: left 0.5s ease;
+    transition: transform 0.5s ease;
 }
 
 .rb-carousel.loading .slide {
