@@ -455,9 +455,11 @@ RB.Carousel.prototype = {
         }
 
         function dragAction(event) {
-
+            console.log('drag action');
             event = event || window.event;
             _this.resetAutoSlide();
+            var rect = _this.carouselInnerEl.getBoundingClientRect();
+
             if (event.type == 'touchmove') {
               xPosition2 = xPosition1 - event.touches[0].clientX;
               xPosition1 = event.touches[0].clientX;
@@ -465,11 +467,13 @@ RB.Carousel.prototype = {
               xPosition2 = xPosition1 - event.clientX;
               xPosition1 = event.clientX;
             }
-            _this.carouselInnerEl.style.transform = "translateX(" + (_this.carouselInnerEl.offsetLeft - xPosition2) + "px)";
+            console.log(rect.left - xPosition2);
+            _this.carouselInnerEl.style.transform = "translateX(" + (rect.left - xPosition2) + "px)";
             
         }
 
         function dragEnd(event) {
+            console.log('drag end');
 
             _this.resetAutoSlide();
             posFinal = _this.carouselInnerEl.offsetLeft;
