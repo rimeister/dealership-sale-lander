@@ -109,10 +109,12 @@ Buttons
 *******************************/
 
 .rb-btn {
-  height: 18px;
   background-color: #f0b31e;
+  border: none;
   border-radius: .25rem;
+  box-sizing: border-box;
   color: #fff;
+  cursor: pointer;
   display: inline-block;
   font-family: 'Istok Web', sans-serif;
   font-size: 1rem;
@@ -127,11 +129,9 @@ Buttons
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-
 }
 
 .rb-btn-large {
-  height: 20px;
   font-size: 1.2em;
   font-weight: 700;
   line-height: 20px;

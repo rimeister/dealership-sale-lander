@@ -723,7 +723,7 @@ RB.Form = function(options) {
 
     this.submitBtn = null;
     this.vendor = null;
-    this.initialized = true;
+    this.initialized = false;
 }
 
 RB.Form.prototype = {
@@ -732,72 +732,100 @@ RB.Form.prototype = {
 
     init: function() {
 
-        this.el.classList.add('rb-form');
+        if (!this.initialized) {
 
-        this.el.addEventListener('submit',function(event){
-            // Prevent the default form behaviour
-            event.preventDefault();
-        });
+           this.el.classList.add('rb-form');
+
+            this.el.addEventListener('submit',function(event){
+                // Prevent the default form behaviour
+                event.preventDefault();
+            });
+            
+            // Config for Pristine validation
+            pristineConfig = {
+                // class of the parent element where the error/success class is added
+                classTo: 'form-group',
+                errorClass: 'rb-has-error',
+                successClass: 'rb-has-success',
+                // class of the parent element where error text element is appended
+                errorTextParent: 'form-group',
+                // type of element to create for the error text
+                errorTextTag: 'div',
+                // class of the error text element
+                errorTextClass: 'rb-form-error' 
+            }
+
+            this.vendor = new RB.Vendor();
+            this.vendor.init();
+
+            // Form validation
+            this.pristine = new this.vendor.Pristine(this.el,pristineConfig,true);
+
+            // Add required classes
+            for (var i=0; i < this.el.elements.length; i++) {
+
+                if (this.el.elements[i].type != 'submit') {
+                    this.el.elements[i].classList.add('rb-form-input');
+                }
+
+                if (this.el.elements[i].type == 'submit') {
+                    this.el.elements[i].classList.add('rb-btn','rb-submit-input');
+                }
+
+                if (this.el.elements[i].type == 'tel') {
+
+                    // If it's a phone number input, set up phone number validation
+                    this.pristine.addValidator(this.el.elements[i], function(value) {
+
+                        var regex = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
+
+                        return regex.test(value);
+
+                    }, "Invalid Phone Number", 2, false);
+
+                }
+
+            }
+
+            // If there's a cancel button, add click handler
+            var cancelBtn = this.el.getElementsByClassName('rb-form-cancel-btn')[0];
+
+            if (typeof cancelBtn !== 'undefined') {
+                cancelBtn.addEventListener('click',this.__cancelBtnHandler.bind(this));
+            }
+
+            /*
         
-        // Config for Pristine validation
-        pristineConfig = {
-            // class of the parent element where the error/success class is added
-            classTo: 'form-group',
-            errorClass: 'rb-has-error',
-            successClass: 'rb-has-success',
-            // class of the parent element where error text element is appended
-            errorTextParent: 'form-group',
-            // type of element to create for the error text
-            errorTextTag: 'div',
-            // class of the error text element
-            errorTextClass: 'rb-form-error' 
-        }
+            // Commenting this out for now. The form uses an <input type="submit" /> element to submit the form. But, if it was a button element, the event listener would be necessary.
 
-        this.vendor = new RB.Vendor();
-        this.vendor.init();
+            // Find submit button and add handler
+            this.submitBtn = this.el.getElementsByClassName('rb-form-submit-btn')[0];
 
-        // Form validation
-        this.pristine = new this.vendor.Pristine(this.el,pristineConfig,true);
+            if (typeof this.submitBtn !== 'undefined') {
+                this.submitBtn.addEventListener('click',this.__submitBtnHandler.bind(this));
+            }
+            */
 
-        // Add required classes
-        for (var i=0; i < this.el.elements.length; i++) {
+            if (this.el.tagName === 'FORM') {
+                
+                this.el.addEventListener('submit',function(event){
+                
+                    // Prevent the default submit function, since we're doing it with ajax
+                    event.preventDefault();
+            
+                    this.__submitForm();
 
-            if (this.el.elements[i].type != 'submit') {
-                this.el.elements[i].classList.add('rb-form-input');
+                    if (this.submitBtnCallback) {
+                        this.submitBtnCallback();
+                    }
+
+                }.bind(this));
             }
 
-            if (this.el.elements[i].type == 'submit') {
-                this.el.elements[i].classList.add('rb-btn','rb-submit-input');
-            }
-
-            if (this.el.elements[i].type == 'tel') {
-
-                // If it's a phone number input, set up phone number validation
-                this.pristine.addValidator(this.el.elements[i], function(value) {
-
-                    var regex = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
-
-                    return regex.test(value);
-
-                }, "Invalid Phone Number", 2, false);
-
-            }
 
         }
 
-        // If there's a cancel button, add click handler
-        var cancelBtn = this.el.getElementsByClassName('rb-form-cancel-btn')[0];
-
-        if (typeof cancelBtn !== 'undefined') {
-            cancelBtn.addEventListener('click',this.__cancelBtnHandler.bind(this));
-        }
-
-        // Find submit button and add handler
-        this.submitBtn = this.el.getElementsByClassName('rb-form-submit-btn')[0];
-
-        if (typeof this.submitBtn !== 'undefined') {
-            this.submitBtn.addEventListener('click',this.__submitBtnHandler.bind(this));
-        }
+        this.initialized = true;
 
     },
     resetForm: function() {
@@ -862,13 +890,11 @@ RB.Form.prototype = {
         this.submitBtn.innerHTML = "Error. Please try again.";  
     },
     __cancelBtnHandler: function(event) {
-        event.preventDefault();
         if (this.cancelCallback) {
             this.cancelCallback();
         }
     },
     __submitBtnHandler: function(event) {
-        event.preventDefault();
         this.__submitForm();
         if (this.submitBtnCallback) {
             this.submitBtnCallback();

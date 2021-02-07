@@ -283,8 +283,6 @@ var APP = function(page) {
         /* Button/link click event handlers */
         function ctaBtnClickHandler(event) {
 
-            event.preventDefault();
-
             // Open the modal
             testDriveModal.open();
 
@@ -303,8 +301,6 @@ var APP = function(page) {
         }
 
         function chatBtnClickHandler(event) {
-
-            event.preventDefault();
 
             // This would open a third party customer service live chat
             alert('NOTE: This button would open a third party customer service live chat');
