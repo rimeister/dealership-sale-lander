@@ -457,7 +457,6 @@ RB.Carousel.prototype = {
         }
 
         function dragAction(event) {
-            console.log('drag action');
             event = event || window.event;
             _this.resetAutoSlide();
             var carouselInnerBoundingRect = _this.carouselInnerEl.getBoundingClientRect();
@@ -474,7 +473,6 @@ RB.Carousel.prototype = {
         }
 
         function dragEnd(event) {
-            console.log('drag end');
             var carouselInnerBoundingRect = _this.carouselInnerEl.getBoundingClientRect();
 
             _this.resetAutoSlide();
