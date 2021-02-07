@@ -441,7 +441,9 @@ RB.Carousel.prototype = {
             event = event || window.event;
             event.preventDefault();
             _this.resetAutoSlide();
-            _this.positionInitial = _this.carouselInnerEl.offsetLeft;
+
+            var carouselInnerBoundingRect = _this.carouselInnerEl.getBoundingClientRect();
+            _this.positionInitial = carouselInnerBoundingRect.left;
 
             if (event.type == 'touchstart') {
               xPosition1 = event.touches[0].clientX;
@@ -458,7 +460,7 @@ RB.Carousel.prototype = {
             console.log('drag action');
             event = event || window.event;
             _this.resetAutoSlide();
-            var rect = _this.carouselInnerEl.getBoundingClientRect();
+            var carouselInnerBoundingRect = _this.carouselInnerEl.getBoundingClientRect();
 
             if (event.type == 'touchmove') {
               xPosition2 = xPosition1 - event.touches[0].clientX;
@@ -467,16 +469,16 @@ RB.Carousel.prototype = {
               xPosition2 = xPosition1 - event.clientX;
               xPosition1 = event.clientX;
             }
-            console.log(rect.left - xPosition2);
-            _this.carouselInnerEl.style.transform = "translateX(" + (rect.left - xPosition2) + "px)";
+            _this.carouselInnerEl.style.transform = "translateX(" + (carouselInnerBoundingRect.left - xPosition2) + "px)";
             
         }
 
         function dragEnd(event) {
             console.log('drag end');
+            var carouselInnerBoundingRect = _this.carouselInnerEl.getBoundingClientRect();
 
             _this.resetAutoSlide();
-            posFinal = _this.carouselInnerEl.offsetLeft;
+            posFinal = carouselInnerBoundingRect.left;
             if (posFinal - _this.positionInitial < -threshold) {
              _this.nextSlide();
             } else if (posFinal - _this.positionInitial > threshold) {
